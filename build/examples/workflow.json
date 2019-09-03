@@ -1,0 +1,9 @@
+{ "workflow_id" : "my_workflow_1",
+  "providers" : [],
+  "tasks" : [
+    {"id" : 1, "function_name" : "my_lambda_function", "successors" : [2,3,4], "properties" : {"position" : "start"}},
+    {"id" : 2, "function_name" : "my_lambda_function", "successors" : [], "properties" : {"static_input" : {"msg" : "static input message" }}},
+    {"id" : 3, "function_name" : "my_lambda_function", "successors" : [4], "properties" : {"delay" : 10}},
+    {"id" : 4, "function_name" : "my_lambda_function", "successors" : []}]
+
+}

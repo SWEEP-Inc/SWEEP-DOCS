@@ -1,0 +1,12 @@
+{ "workflow_id" : "test_mult_follow3",
+  "providers" : [],
+  "tasks" : [
+    {"id" : "1", "function_name" : "myFunc", "successors" : [2,3], "properties" : {"position" : "start"}},
+    {"id" : "2", "function_name" : "myFunc", "successors" : [4],
+      "properties" : {"dynamic_multiplicity" : "predecessor_outputs['1']['buckets'][0]['count']", "partitioned_input" : "predecessor_outputs['1']['tile']"}},
+    {"id" : "3", "function_name" : "myFunc", "successors" : [4]},
+    {"id" : "4", "function_name" : "multFunc", "successors" : [5] , "properties" : {"follow_multiplicity" : 2}},
+    {"id" : "5", "function_name" : "myFunc", "successors" : []}
+
+  ]
+}

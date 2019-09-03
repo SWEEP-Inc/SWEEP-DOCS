@@ -1,0 +1,1675 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>SWEEP Documentation and API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#defining-workflows" class="toc-h1 toc-link" data-title="Defining workflows">Defining workflows</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#definition-of-workflow" class="toc-h2 toc-link" data-title="Definition of workflow:">Definition of <strong>workflow</strong>:</a>
+                  </li>
+                  <li>
+                    <a href="#definition-of-workflow-configuration" class="toc-h2 toc-link" data-title="Definition of workflow configuration:">Definition of <strong>workflow configuration</strong>:</a>
+                  </li>
+                  <li>
+                    <a href="#defintion-of-task_entry" class="toc-h2 toc-link" data-title="Defintion of task_entry:">Defintion of <strong>task_entry</strong>:</a>
+                  </li>
+                  <li>
+                    <a href="#defintion-of-task-properties" class="toc-h2 toc-link" data-title="Defintion of task properties:">Defintion of <strong>task properties</strong>:</a>
+                  </li>
+                  <li>
+                    <a href="#dag-representation-of-this-workflow-with-deploy-conditions" class="toc-h2 toc-link" data-title="DAG representation of this workflow with deploy conditions:">DAG representation of this workflow with deploy conditions:</a>
+                  </li>
+                  <li>
+                    <a href="#dag-representation-of-this-workflow-with-a-task-with-multiplicity-3" class="toc-h2 toc-link" data-title="DAG representation of this workflow with a task with multiplicity 3:">DAG representation of this workflow with a task with multiplicity 3:</a>
+                  </li>
+                  <li>
+                    <a href="#dag-representation-of-this-workflow-with-a-dynamically-replicated-task" class="toc-h2 toc-link" data-title="DAG representation of this workflow with a dynamically replicated task:">DAG representation of this workflow with a dynamically replicated task:</a>
+                  </li>
+                  <li>
+                    <a href="#dag-representation-of-this-workflow-with-a-dynamically-replicated-task-and-follow_multiplicity" class="toc-h2 toc-link" data-title="DAG representation of this workflow with a dynamically replicated task and follow_multiplicity:">DAG representation of this workflow with a dynamically replicated task and follow_multiplicity:</a>
+                  </li>
+                  <li>
+                    <a href="#dag-representation-of-the-more-complicated-follow_multiplicity-example" class="toc-h2 toc-link" data-title="DAG representation of the more complicated follow_multiplicity example:">DAG representation of the more complicated follow_multiplicity example:</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#task-arguments-and-outputs" class="toc-h1 toc-link" data-title="Task arguments and outputs">Task arguments and outputs</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#outputs" class="toc-h2 toc-link" data-title="Outputs">Outputs</a>
+                  </li>
+                  <li>
+                    <a href="#inputs" class="toc-h2 toc-link" data-title="Inputs">Inputs</a>
+                  </li>
+                  <li>
+                    <a href="#workflows-with-container-based-tasks" class="toc-h2 toc-link" data-title=" Workflows with container-based tasks"> Workflows with container-based tasks</a>
+                  </li>
+                  <li>
+                    <a href="#example-of-a-container-based-workflow" class="toc-h2 toc-link" data-title="Example of a container-based workflow">Example of a container-based workflow</a>
+                  </li>
+                  <li>
+                    <a href="#inputting-information-to-a-container-task" class="toc-h2 toc-link" data-title="Inputting information to a container task">Inputting information to a container task</a>
+                  </li>
+                  <li>
+                    <a href="#examples-of-a-container-based-workflows-where-overrides-are-defined-on-the-workflow-defintion-level" class="toc-h2 toc-link" data-title="Examples of a container-based workflows where overrides are defined on the workflow defintion level">Examples of a container-based workflows where overrides are defined on the workflow defintion level</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#running-of-function-based-workflow" class="toc-h1 toc-link" data-title="Running of function-based workflow">Running of function-based workflow</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#first-add-register-your-main-tasks-aka-functions" class="toc-h2 toc-link" data-title="First, add/register your main tasks (aka Functions)">First, add/register your main tasks (aka Functions)</a>
+                  </li>
+                  <li>
+                    <a href="#upload-the-function" class="toc-h2 toc-link" data-title="Upload the function">Upload the function</a>
+                  </li>
+                  <li>
+                    <a href="#register-the-workflow-definition" class="toc-h2 toc-link" data-title="Register the workflow definition">Register the workflow definition</a>
+                  </li>
+                  <li>
+                    <a href="#launch-and-monitor-the-workflow" class="toc-h2 toc-link" data-title="Launch and monitor the workflow">Launch and monitor the workflow</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-overview" class="toc-h1 toc-link" data-title="API Overview">API Overview</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#manage-workflows" class="toc-h2 toc-link" data-title="Manage Workflows">Manage Workflows</a>
+                  </li>
+                  <li>
+                    <a href="#launch-workflow" class="toc-h2 toc-link" data-title="Launch Workflow">Launch Workflow</a>
+                  </li>
+                  <li>
+                    <a href="#workflow-status" class="toc-h2 toc-link" data-title="Workflow  Status">Workflow  Status</a>
+                  </li>
+                  <li>
+                    <a href="#workflow-launch-status" class="toc-h2 toc-link" data-title="Workflow  Launch Status">Workflow  Launch Status</a>
+                  </li>
+                  <li>
+                    <a href="#delete-workflow" class="toc-h2 toc-link" data-title="Delete Workflow">Delete Workflow</a>
+                  </li>
+                  <li>
+                    <a href="#tasks-functions" class="toc-h2 toc-link" data-title="Tasks (Functions)">Tasks (Functions)</a>
+                  </li>
+                  <li>
+                    <a href="#list-functions" class="toc-h2 toc-link" data-title="List functions">List functions</a>
+                  </li>
+                  <li>
+                    <a href="#upload-function" class="toc-h2 toc-link" data-title="Upload function">Upload function</a>
+                  </li>
+                  <li>
+                    <a href="#delete-function" class="toc-h2 toc-link" data-title="Delete function">Delete function</a>
+                  </li>
+                  <li>
+                    <a href="#list-container-definitions-or-tasks" class="toc-h2 toc-link" data-title="List Container definitions (or tasks)">List Container definitions (or tasks)</a>
+                  </li>
+                  <li>
+                    <a href="#upload-container-definitions-or-tasks" class="toc-h2 toc-link" data-title="Upload Container definitions (or tasks)">Upload Container definitions (or tasks)</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://sweep.run'>Sign Up for API access</a></li>
+        </ul>
+
+      <div class="toc-footer bottom cc-info">
+
+      		<a href='https://creativecommons.org/licenses/by-sa/4.0/'>Content:
+      		CC-BY-SA </a>
+
+      	</div>
+
+
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the SWEEP Docs! You can use our SDK to access SWEEP endpoints or code against our REST endpoints.</p>
+
+<p>We have language bindings in Python, and are working on JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language (only Python where applicable) of the examples with the tabs in the top right.</p>
+<h1 id='defining-workflows'>Defining workflows</h1>
+<p>A workflow is a collection of tasks, represented as a directed acyclic graph (DAG), where an edge from task A to task B indicates
+that task B can start after task A is finished. The structure and syntax of workflow definitions are defined below.</p>
+<h2 id='definition-of-workflow'>Definition of <strong>workflow</strong>:</h2><pre class="highlight python tab-python"><code><span class="p">{</span>
+    <span class="s">'workflow_id'</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">'config'</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="s">'tasks'</span> <span class="p">:</span> <span class="n">task_entry</span> <span class="nb">list</span>
+<span class="p">}</span>
+</code></pre>
+<ul>
+<li><p><strong>workflow_id</strong>: unique identifier of the workflow</p></li>
+<li><p><strong>config</strong>: optional workflow configuration dict, contains directives for workflow orchestration</p></li>
+<li><p><strong>tasks</strong>: list of <strong>task_entry</strong> dicts, each representing a task</p></li>
+</ul>
+<h2 id='definition-of-workflow-configuration'>Definition of <strong>workflow configuration</strong>:</h2><pre class="highlight python tab-python"><code><span class="p">{</span>
+    <span class="s">"max_task_concurrency"</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s">"max_task_runtime"</span> <span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</code></pre>
+<ul>
+<li><p><strong>max_task_concurrency</strong>: max number of tasks to run concurrently</p></li>
+<li><p><strong>max_task_runtime</strong>: task timeout in seconds</p></li>
+</ul>
+<h2 id='defintion-of-task_entry'>Defintion of <strong>task_entry</strong>:</h2><pre class="highlight python tab-python"><code><span class="p">{</span>
+    <span class="s">"id"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">"function_name"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">"image_name"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">"image_tag"</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="s">"successors"</span> <span class="p">:</span> <span class="nb">str</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="s">"properties"</span> <span class="p">:</span> <span class="nb">dict</span>
+<span class="p">}</span>
+</code></pre>
+<ul>
+<li><p><strong>id</strong>: is a unique identifier</p></li>
+<li><p><strong>function_name</strong>: for function-based tasks: the name of the function that the task runs. the function must be registered in SWEEP.</p></li>
+<li><p><strong>image_name</strong>, <strong>image_tag</strong>: for container-based tasks: the name and tag of the container the task runs. a container definition for this name and tag must be registered in SWEEP.</p></li>
+</ul>
+
+<blockquote>
+<p>a task should have either <strong>&quot;function_name&quot;</strong> or <strong>image_name</strong> and <strong>image_tag</strong> spceified</p>
+</blockquote>
+
+<ul>
+<li><p><strong>successors</strong>: a list of tasks that should be invoked when the task finishes. this defines the DAG representing the workflow.</p></li>
+<li><p><strong>properties</strong>: optional task properties dict</p></li>
+</ul>
+
+<blockquote>
+<h3 id='task-properties'>Task properties</h3>
+<p>Task properties are static values that are associated with a task. This means that they do not change over time,
+they are associated with a workflow (unlike task attributes described below, which are associated with a particular launch of the workflow).</p>
+</blockquote>
+<h2 id='defintion-of-task-properties'>Defintion of <strong>task properties</strong>:</h2><pre class="highlight python tab-python"><code><span class="p">{</span>
+    <span class="s">"position"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">"delay"</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s">"static_input"</span> <span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+    <span class="s">"multiplicity"</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="s">"deploy_conditions"</span> <span class="p">:</span> <span class="n">expr</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="s">"dynamic_multiplicity"</span> <span class="p">:</span> <span class="n">expr</span><span class="p">,</span>
+    <span class="s">"partitoned_input"</span> <span class="p">:</span> <span class="n">expr</span><span class="p">,</span>
+    <span class="s">"follow_multiplicity"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s">"environment"</span> <span class="p">:</span> <span class="nb">dict</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="s">"command"</span> <span class="p">:</span> <span class="nb">str</span> <span class="nb">list</span>
+
+
+<span class="p">}</span>
+</code></pre>
+<ul>
+<li><p><strong>position</strong>: the position in the task graph. used to define the starting task.</p>
+
+<blockquote>
+<p>There must be exactly one task with the property <strong>&quot;position&quot; : &quot;start&quot;</strong>. This will be the first task that is executed, and all other tasks should be on a path from the start task in the DAG representation.</p>
+</blockquote></li>
+<li><p><strong>delay</strong>: time in seconds that a task should wait before being launched. the delay begins when the task is otherwise ready to lauch, after all its predecessors have finished.</p></li>
+<li><p><strong>static_input</strong>: input to the task that is independent of the launch, other tasks, etc.</p></li>
+<li><p><strong>multiplicity</strong>: specifies a number of times a task should be replicated.</p></li>
+<li><p><strong>deploy_conditions</strong>: list of conditions in the form of expressions depending on the output of this task predecessors that must be fulfilled in order for the task to be launched. if all predecessors have finished but any of the conditions is not true, the task fails.</p></li>
+<li><p><strong>dynamic_multiplicity</strong>: specifies a number of times a task should be replicated with an expression that depends on the output of a predecessor task.</p></li>
+<li><p><strong>partitoned_input</strong>: only valid for tasks with multiplicity or dynamic_multiplicity: an expression that indicates which part of a predecessors output should be split between the multiple tasks. It is assumed that the output of the predecessor contains the specified item, and that it is a list with x number of items, where x is the multiplicity of the successor.</p></li>
+<li><p><strong>follow_multiplicity</strong>: specifies a predecessor ID whose multiplicity to follow. If that predecessor is expanded to some multiplicity, this task is expanded to the same multiplicity, with one new task following each of the expanded tasks of the predecessor.</p></li>
+<li><p><strong>environment</strong>: only valid for container-based tasks. specifies environment variables the image, overriding the one specified when building the image and the one in the container definition. one dictionary per environment variable, the dictionary must contains 2 items: &quot;name&quot; and
+&quot;value&quot;</p></li>
+</ul>
+
+<blockquote>
+<p>Example of <strong>environment</strong> property:</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="s">"environment"</span> <span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"EVAR1"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">},</span>
+                <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"EVAR2"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"hello"</span><span class="p">}</span>
+              <span class="p">]</span>
+</code></pre>
+<ul>
+<li><strong>command</strong>: only valid for container-based tasks. specifies a command to run in the image, overriding the one specified when building the image and the one in the container definition.</li>
+<li><strong>static_output</strong>: specfies a pre-determined item in the task&#39;s output. it will appear in the output-dictionary of a task with the key &quot;static_output&quot;, along with any other output that the actual task generates. <strong>NOTE:</strong> <em>unlike static_input, the *value</em> must not be determined before launch: static_output may be a str, in which case it is considered a dynamic property (see below), meaning it can e.g. specify a value in terms of the predecessor outputs.*</li>
+</ul>
+
+<blockquote>
+<p>Example of <strong>static_output</strong> property:</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="s">"static_output"</span> <span class="p">:</span> <span class="s">"predecessor_outputs["</span><span class="mi">1</span><span class="s">']['</span><span class="n">env_vars</span><span class="s">']"</span><span class="err">
+</span></code></pre>
+<blockquote>
+<h3 id='dynamic-task-properties'>Dynamic task properties</h3>
+<p>Dynamic task properties are properties whose value is decided at runtime. They are specified by strings expressing Python expressions that evaluate to some value.
+Their conditions are expressed in terms of &quot;predecessor_outputs[id]&quot; (the dict containing outputs of all predecessors is stored in a variable names predecessor_outputs).</p>
+</blockquote>
+<h3 id='the-properties-that-must-be-dynamic-are'>The properties that must be dynamic are:</h3>
+<ul>
+<li><strong>deploy_conditions</strong></li>
+<li><strong>dynamic_multiplicity</strong></li>
+<li><strong>partitioned_input</strong></li>
+</ul>
+<h3 id='the-properties-that-may-be-dynamic-are'>The properties that may be dynamic are:</h3>
+<p>If their value is of type str: they are treated as dynamic, to be evaluated
+Else (e.g. if the type is an int) : that specifies the value</p>
+
+<ul>
+<li><strong>environment</strong></li>
+<li><strong>static_output</strong></li>
+</ul>
+
+<p>(The last one is a bit un-intuitive: but the <em>existence</em> of the output is static (predetermined), the actual <em>value</em> is dynamic)</p>
+<h3 id='example-definition-of-a-workflow'>Example definition of a workflow:</h3>
+<p>See <a href="examples/workflow.json">examples/workflow.json</a></p>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span> <span class="s">"workflow_id"</span> <span class="p">:</span> <span class="s">"my_workflow_1"</span><span class="p">,</span>
+  <span class="n">config</span> <span class="p">:</span> <span class="p">{},</span>
+  <span class="n">tasks</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func1"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"position"</span> <span class="p">:</span> <span class="s">"start"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func1"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="n">static_input</span> <span class="p">:</span> <span class="p">{</span><span class="n">msg</span> <span class="p">:</span> <span class="n">static</span> <span class="nb">input</span> <span class="n">message</span> <span class="p">},</span> <span class="n">deploy_conditions</span> <span class="p">:</span> <span class="p">[</span><span class="n">predecessor_outputs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">'buckets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'count'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func1"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="n">delay</span> <span class="p">:</span> <span class="mi">10</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func1"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[]}]</span>
+
+<span class="p">}</span>
+</code></pre><h2 id='dag-representation-of-this-workflow-with-deploy-conditions'>DAG representation of this workflow with deploy conditions:</h2>
+<div style="text-align:left"><img src="images/example_wf_DAG.png" width="400" height=300 /></div>
+
+<blockquote>
+<p>Example definition of a workflow with a replicated task:</p>
+</blockquote>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span> <span class="n">workflow_id</span> <span class="p">:</span> <span class="n">my_workflow_2</span><span class="p">,</span>
+  <span class="n">providers</span> <span class="p">:</span> <span class="p">[],</span>
+  <span class="n">tasks</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="s">"1"</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func2"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="s">"2"</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"position"</span> <span class="p">:</span> <span class="s">"start"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="s">"2"</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func2"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="s">"3"</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"multiplicity"</span> <span class="p">:</span> <span class="s">'3'</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="s">"3"</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func2"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"static_input"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"msg"</span> <span class="p">:</span> <span class="s">"static input message"</span> <span class="p">}}}]</span>
+<span class="p">}</span>
+</code></pre><h2 id='dag-representation-of-this-workflow-with-a-task-with-multiplicity-3'>DAG representation of this workflow with a task with multiplicity 3:</h2>
+<p>The task with id 2 that had multiplicity 3 is turned into 3 tasks: 2_A, 2_B and 2_C.</p>
+
+<p>All of these will be launched when task 1 is completed.</p>
+
+<p>All of these must finish before the successor task 3 can be launched.</p>
+
+<div style="text-align:left"><img src="images/example_wf_DAG_mult.png" width="400" height=300 /></div>
+
+<blockquote>
+<p>Example definition of a workflow with a dynamically replicated task:</p>
+</blockquote>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span> <span class="s">"workflow_id"</span> <span class="p">:</span> <span class="s">"test_mult_dynamic"</span><span class="p">,</span>
+  <span class="s">"providers"</span> <span class="p">:</span> <span class="p">[],</span>
+  <span class="s">"tasks"</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"firstFunc"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"position"</span> <span class="p">:</span> <span class="s">"start"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"multFunc"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"dynamic_multiplicity"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['buckets'][0]['count']"</span><span class="p">,</span> <span class="s">"partitioned_input"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['tile']"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"otherFunc"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[]}]</span>
+<span class="p">}</span>
+
+</code></pre>
+<p>If the function <strong>firstFunc</strong> generates the following output:</p>
+<pre class="highlight python tab-python"><code><span class="p">{</span> <span class="s">"utc_offset"</span><span class="p">:</span> <span class="s">"+0h"</span><span class="p">,</span>
+  <span class="s">"interval"</span><span class="p">:</span> <span class="s">"day"</span><span class="p">,</span>
+  <span class="s">"buckets"</span><span class="p">:</span> <span class="p">[{</span><span class="s">"count"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"start_time"</span><span class="p">:</span> <span class="s">"2018-07-03T00:00:00.000000Z"</span><span class="p">}],</span>
+  <span class="s">"tile"</span> <span class="p">:</span> <span class="p">[{</span><span class="s">"tile_id"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s">"tile_id"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">},{</span><span class="s">"tile_id"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">}]}</span>
+</code></pre>
+<p>Then task <strong>2</strong> will be expanded to tasks <strong>2_A</strong>, <strong>2_B</strong>, <strong>2_C</strong>, each receiving the following input (where X = 0,1,2):</p>
+<pre class="highlight python tab-python"><code><span class="p">{</span> <span class="s">"utc_offset"</span><span class="p">:</span> <span class="s">"+0h"</span><span class="p">,</span>
+  <span class="s">"interval"</span><span class="p">:</span> <span class="s">"day"</span><span class="p">,</span>
+  <span class="s">"buckets"</span><span class="p">:</span> <span class="p">[{</span><span class="s">"count"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"start_time"</span><span class="p">:</span> <span class="s">"2018-07-03T00:00:00.000000Z"</span><span class="p">}],</span>
+  <span class="s">"tile"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"tile_id"</span> <span class="p">:</span> <span class="n">X</span><span class="p">}}</span>
+</code></pre><h2 id='dag-representation-of-this-workflow-with-a-dynamically-replicated-task'>DAG representation of this workflow with a dynamically replicated task:</h2>
+<p>The task with id <strong>2</strong> has dynamic multiplicity.</p>
+
+<div style="text-align:left"><img src="images/example_wd_DAG_dyn_A.png" width="400" height=300 /></div>
+
+<p>Upon completion of task <strong>1</strong>, task <strong>2</strong> is expanded into 3 tasks: <strong>2_A</strong>, <strong>2_B</strong> and <strong>2_C</strong></p>
+
+<div style="text-align:left"><img src="images/example_wd_DAG_dyn_B.png" width="400" height=300 /></div>
+
+<blockquote>
+<h3 id='example-definition-of-a-workflow-with-a-dynamically-replicated-task-and-following-multiplicity'>Example definition of a workflow with a dynamically replicated task and following multiplicity:</h3></blockquote>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span> <span class="n">workflow_id</span> <span class="p">:</span> <span class="n">test_mult_follow</span><span class="p">,</span>
+  <span class="n">providers</span> <span class="p">:</span> <span class="p">[],</span>
+  <span class="n">tasks</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"firstFunc"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"position"</span> <span class="p">:</span> <span class="s">"start"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"multFunc"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"dynamic_multiplicity"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['buckets'][0]['count']"</span><span class="p">,</span> <span class="s">"partitioned_input"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['tile']"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"otherFunc"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"follow_multiplicity"</span> <span class="p">:</span> <span class="s">"2"</span><span class="p">}}]</span>
+<span class="p">}</span>
+
+</code></pre>
+<p>If the function <strong>firstFunc</strong> generates the same output as the examle above, and task <strong>2</strong> is expanded in the same manner:</p>
+
+<p>Then task <strong>3</strong> will be expanded to tasks <strong>3_A</strong>, <strong>3_B</strong>, <strong>3_C</strong>, each of which becomes a successor of one of the tasks expanded from task <strong>2</strong>:</p>
+<h2 id='dag-representation-of-this-workflow-with-a-dynamically-replicated-task-and-follow_multiplicity'>DAG representation of this workflow with a dynamically replicated task and follow_multiplicity:</h2>
+<p>The task with id <strong>2</strong> has dynamic multiplicity.</p>
+
+<div style="text-align:left"><img src="images/example_wf_DAG_follow_A.png" width="400" height=300 /></div>
+
+<p>Upon expansion of task <strong>2</strong>, task <strong>3</strong> is expanded into 3 tasks: <strong>3_A, 3_B</strong> and <strong>3_C</strong>.</p>
+
+<div style="text-align:left"><img src="images/example_wf_DAG_follow_B.png" width="400" height=300 /></div>
+
+<blockquote>
+<h3 id='example-of-a-more-complicated-following-multiplicity-scenario'>Example of a more complicated following multiplicity scenario:</h3></blockquote>
+
+<p>see  <a href="examples/dynamic_workflow_example/test_dynamic_wf.json">examples/dynamic_workflow_example/test_dynamic_wf.json</a></p>
+<pre class="highlight python tab-python"><code><span class="p">{</span> <span class="n">workflow_id</span> <span class="p">:</span> <span class="n">test_mult_follow2</span><span class="p">,</span>
+  <span class="n">providers</span> <span class="p">:</span> <span class="p">[],</span>
+  <span class="n">tasks</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func2"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"position"</span> <span class="p">:</span> <span class="s">"start"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func2"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+      <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="n">dynamic_multiplicity</span> <span class="p">:</span> <span class="n">predecessor_outputs</span><span class="p">[</span><span class="s">'1'</span><span class="p">][</span><span class="s">'buckets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'count'</span><span class="p">],</span> <span class="s">"partitioned_input"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['tile']"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func2"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="n">multFunc</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">,</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="n">follow_multiplicity</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="s">"lambda_func2"</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[]}</span>
+
+  <span class="p">]</span>
+<span class="p">}</span>
+
+</code></pre>
+<p>If the function <strong>firstFunc</strong> generates the same output as the examle above, and task <strong>2</strong> is expanded in the same manner:</p>
+
+<p>Then task <strong>3</strong> will be expanded to tasks <strong>3_A</strong>, <strong>3_B</strong>, <strong>3_C</strong>, each of which becomes a successor of one of the tasks expanded from task <strong>2</strong>:</p>
+<h2 id='dag-representation-of-the-more-complicated-follow_multiplicity-example'>DAG representation of the more complicated follow_multiplicity example:</h2>
+<div style="text-align:left"><img src="images/example_wf_DAG_follow2_A.png" width="400" height=300 /></div>
+
+<p>When task <strong>1</strong> completes, task <strong>2</strong> can be expanded. In addition, task <strong>3</strong> can also immediately be expanded (without waiting for all task <strong>2</strong> instances to complete) since its multiplicity depends on the multiplicity of task <strong>2</strong>, which has already been decided.</p>
+
+<div style="text-align:left"><img src="images/example_wf_DAG_follow2_B.png" width="400" height=300 /></div>
+<h3 id='another-example'>Another example:</h3>
+<p>See  <a href="examples/example_2">examples/example_2</a> for more examples with different ways of defining multiplicity.</p>
+<h1 id='task-arguments-and-outputs'>Task arguments and outputs</h1><h2 id='outputs'>Outputs</h2>
+<p>Task outputs are dicts.</p>
+
+<p>There are no requirements on the structure of the outputs.</p>
+
+<p>If the task does not output anything, this must be represented by an empty dict.</p>
+<h2 id='inputs'>Inputs</h2>
+<p>Every task gets an input of the same structure:</p>
+<pre class="highlight python tab-python"><code><span class="p">{</span>
+    <span class="n">predecessor_outputs</span> <span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">static_input</span> <span class="p">:</span> <span class="nb">dict</span>
+<span class="p">}</span>
+</code></pre>
+<ul>
+<li><p><strong>predecessor_outputs</strong> contains outputs from every predecessor of the task. For every predecessor id x, it has an entry
+  x : {output of task x}.</p></li>
+<li><p><strong>static_input</strong> is the dict specified as this task&#39;s <strong>static_input</strong>-property in the workflow definition. Empty dict if no such property was specified.</p></li>
+</ul>
+
+<p>See examples/lambda_function_template.py</p>
+
+<blockquote>
+<h3 id='example-task-input-of-a-task-with-two-predecessors'>Example task input of a task with two predecessors:</h3></blockquote>
+<pre class="highlight python tab-python"><code><span class="p">{</span>
+    <span class="n">predecessor_outputs</span> <span class="p">:</span> <span class="p">{</span><span class="mi">1</span> <span class="p">:</span> <span class="p">{</span><span class="n">msg</span><span class="p">:</span> <span class="s">"I completed successfully"</span><span class="p">}</span> <span class="p">,</span> <span class="mi">2</span> <span class="p">:</span> <span class="p">{</span><span class="n">buckets</span> <span class="p">:</span> <span class="mi">10</span><span class="p">}},</span>
+    <span class="n">static_input</span> <span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre><h2 id='workflows-with-container-based-tasks'> Workflows with container-based tasks</h2><h3 id='creating-a-container-definition-and-pushing-it-to-sweep'>Creating a container definition and pushing it to SWEEP</h3>
+<p>SWEEP tasks can also be made up of docker images, where one task runs one container.</p>
+
+<p>Instead of uploading a <em>lambda funciton</em> to SWEEP, a <em>container definition</em> is uploaded.</p>
+
+<blockquote>
+<p>A container defintion defines two things for the task
+1. A docker image that the container will be based on
+2. Information for defining the container (memory, cpu, command to run)</p>
+</blockquote>
+
+<p>The container definition is made up by a json file</p>
+
+<blockquote>
+<p>for e.g. my_container_def.json</p>
+</blockquote>
+<pre class="highlight python tab-python"><code>  <span class="p">{</span>
+  <span class="s">"image_name"</span><span class="p">:</span> <span class="s">"my_image_name"</span><span class="p">,</span>
+  <span class="s">"image_tag"</span><span class="p">:</span> <span class="s">"latest"</span><span class="p">,</span>
+  <span class="s">"cpu_units"</span> <span class="p">:</span> <span class="s">"256"</span><span class="p">,</span>
+  <span class="s">"memory"</span> <span class="p">:</span> <span class="s">"512"</span><span class="p">,</span>
+  <span class="s">"command"</span><span class="p">:</span> <span class="p">[</span><span class="s">"sh"</span><span class="p">,</span> <span class="s">"-c"</span><span class="p">,</span> <span class="s">"echo hello"</span><span class="p">]</span>
+  <span class="p">}</span>
+</code></pre>
+<ul>
+<li><p>required: <strong>&quot;image_name&quot;</strong> and <strong>&quot;image_tag&quot;</strong> define the image to base the container on (this must exist in the local docker repo for now)</p></li>
+<li><p>optional: <strong>&quot;cpu_units&quot;</strong> and <strong>&quot;memory&quot;</strong> define the runtime resources of the container. We pay for all specified resources even if they are not used. If not specified, the minimum values are used (which are the ones in this example). See https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-defs.html (Task CPU and Memory) for valid configurations for these values.</p></li>
+<li><p>optional: <strong>&quot;command&quot;</strong> defines the command to run when starting the container, overriding the command specified in the docker image definition. Eventually we want this to be specified in the workflow def, NOT in the container_def, but for now this is how it is implemented.</p></li>
+</ul>
+
+<p>The created container can then be pushed to SWEEP:</p>
+<h4 id='upload-a-container-definition-to-sweep'>Upload a container definition to SWEEP</h4>
+<p>container_def_file = &quot;./folder/my_container_def.json&quot;
+    response = sweep_client.upload_container_def(cfile=container_def_file)
+    print(response)</p>
+
+<p>&gt; &quot;{&#39;status&#39; : &#39;OK&#39;, &#39;msg&#39; : &#39;&quot;Started uploading image.&#39;}&quot;</p>
+
+<p><strong>NOTE:</strong> the specified image and tag must exist in the local docker registry.</p>
+
+<blockquote>
+<p><strong>trying to push another container definition with the same image_name and image_tag will</strong></p>
+
+<ul>
+<li>update the cpu, memory and command settings</li>
+<li>NOT overwrite the uploaded image (even if it has changed in the local docker repo) UNLESS the optional argument --overwrite is given to sweep upload_container_def
+<em>The idea behind this is that uploading images to AWS is slow, and it should be possible to update e.g. memory or cpu_units without uploading a new image.</em></li>
+</ul>
+</blockquote>
+
+<p>The uploading may take some time. Currently, the only way to confirm that it was uploaded is to:</p>
+<h4 id='list-the-uploaded-container-defintions'>List the uploaded container defintions</h4><pre class="highlight plaintext"><code>response = sweep_client.list_container_defs()
+print(response)
+
+&gt; "{'status' : 'OK', 'msg' : 'Succeeded in fetching container defintions.',
+    'container_defs' :
+ [
+      {
+             "image_name": 'my_image_name',
+             "image_tag": 'latest',
+             "command": ['sh', '-c', 'echo hello'],
+             'cpu_units': '256',
+             'imagePushedAt': '2019-07-08 16:11:11+02:00',
+             'imageSizeInBytes': 2487,
+             'memory': '512'}
+  ]
+ }"
+</code></pre><h3 id='defining-a-workflow-with-container-based-tasks'>Defining a workflow with container-based tasks</h3>
+<p>To define container-based tasks in a workflow, the <strong>&quot;function_name&quot;</strong> argument is replaced by <strong>image_name</strong> and <strong>image_tag</strong> arguments.</p>
+
+<p>Example workflow with container-based tasks as well as function tasks.</p>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span> <span class="n">workflow_id</span> <span class="p">:</span> <span class="n">my_workflow</span><span class="p">,</span>
+  <span class="n">providers</span> <span class="p">:</span> <span class="p">[],</span>
+  <span class="n">tasks</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="n">first_func</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="s">"position"</span> <span class="p">:</span> <span class="s">"start"</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">image_name</span> <span class="p">:</span> <span class="n">my_image_1</span><span class="p">,</span> <span class="n">image_tag</span> <span class="p">:</span> <span class="n">latest</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[]},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">image_name</span> <span class="p">:</span> <span class="n">my_image_2</span><span class="p">,</span> <span class="n">image_tag</span> <span class="p">:</span> <span class="n">latest</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="s">"properties"</span> <span class="p">:</span> <span class="p">{</span><span class="n">delay</span> <span class="p">:</span> <span class="mi">10</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s">"id"</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"function_name"</span> <span class="p">:</span> <span class="n">other_func</span><span class="p">,</span> <span class="s">"successors"</span> <span class="p">:</span> <span class="p">[]}]</span>
+
+<span class="p">}</span>
+</code></pre><h3 id='regsiter-a-workflow-with-container-based-tasks-in-sweep'>Regsiter a workflow with container-based tasks in SWEEP</h3><pre class="highlight python tab-python"><code>
+    <span class="n">workflow_def_file</span> <span class="o">=</span> <span class="s">"./folder/my_container_def.json"</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">sweep_client</span><span class="o">.</span><span class="n">register_workflow</span><span class="p">(</span><span class="n">wffile</span><span class="o">=</span><span class="n">workflow_def_file</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="o">&gt;</span> <span class="s">"{'workflow_id': 'my_workflow', 'status' : 'OK', 'msg' : 'Successfully created workflow my_workflow.'}"</span>
+
+</code></pre>
+<p>Container-based tasks behave just like function-based tasks in a workflow, except:</p>
+
+<ol>
+<li>They do not receive input (not from predecessors, not static input).</li>
+<li>They do not output anything to their successors.</li>
+<li>Their status is defined by their exit code. This is the exit code of the docker container,
+which is the exit code of the command run inside the container. Exit code 0 means success.</li>
+</ol>
+
+<p><strong>Make sure the images you push are such that they return the exit code 0 if they run successfully</strong>
+This is standard behaviour, but you can check the exit code of a container locally by running
+your image and printing the environment variable ?, which contains the exit code of the latest run command.</p>
+
+<p>docker run my_image; echo $?</p>
+<h2 id='example-of-a-container-based-workflow'>Example of a container-based workflow</h2>
+<p>An example of a workflow that contains 3 tasks that all run a container based on the same image that writes some data to s3.</p>
+<h5 id='step-1-create-the-image-locally-using-docker'>Step 1: create the image locally using docker</h5>
+<p><a href="../docker/task_s3">../docker/task_s3</a> contains the defintion of a docker image consisting of a simple
+python script that pushes some data to S3. (It needs to be completed with AWS credentials.)</p>
+
+<p>The script <a href="../docker/docker_cmds_task_s3.sh">../docker/docker_cmds_task_s3.sh</a> contains commands
+to build the image, and test running it locally.</p>
+
+<p>$ ./docker_cmds_task_s3.sh</p>
+
+<p>&gt; Sending build context to Docker daemon  4.096kB
+    &gt; ...
+    &gt; Successfully built YYYYYYY
+    &gt; Successfully tagged task_s3:latest
+    &gt; Pushed object: {&quot;test&quot;: 1}
+    &gt; Pulled object: b&#39;{&quot;test&quot;: 1}&#39;
+    &gt; 0</p>
+<h5 id='step-2-upload-the-container-definition-to-sweep'>Step 2: upload the container definition to SWEEP</h5>
+<p>The container definition is <a href="examples/container_workflows/container_def_test_s3.json">examples/container_workflows/container_def_test_s3.json</a></p>
+
+<p>container_def_file = &quot;examples/container_workflows/container_def_test_s3.json&quot;
+    response = sweep_client.upload_container_def(cfile=container_def_file)
+    print(response)</p>
+
+<p>&gt; {&quot;status&quot;: &quot;OK&quot;, &quot;msg&quot;: &quot;Started uploading image.&quot;}</p>
+<h5 id='step-3-upload-the-workflow-definition-to-sweep'>Step 3: upload the workflow definition to SWEEP</h5>
+<p>The workflow definition is <a href="examples/container_workflows/wf_def_test_s3.json">examples/container_workflows/wf_def_test_s3.json</a></p>
+
+<p>workflow_def_file = &quot;examples/container_workflows/wf_def_test_s3.json&quot;
+    response = sweep_client.register_workflow(wffile=workflow_def_file)
+    print(response)</p>
+
+<p>&gt; &quot;{&#39;workflow_id&#39;: &#39;test_s3&#39;, &#39;status&#39; : &#39;OK&#39;, &#39;msg&#39; : &#39;Successfully created workflow test_s3.&#39;}&quot;</p>
+<h5 id='step-4-launch-and-monitor-the-workflow'>Step 4: launch and monitor the workflow</h5>
+<p>response = sweep_client.launch_workflow(wid=&quot;test_s3&quot;)
+    lid = response[&quot;launch_id&quot;]</p>
+
+<p>response = sweep_client.launch_status(wid=&quot;test_s3&quot;, lid=lid)
+    print(response)</p>
+<h2 id='inputting-information-to-a-container-task'>Inputting information to a container task</h2>
+<p>There are two ways that we can input information into containers:
+1. the command to run when the container is launched
+2. environment variables</p>
+
+<p>Both of these can be set when
+* defining the docker image
+* defining the SWEEP container definition <strong>This overrides the ones specified when building the docker image</strong>
+* (new): in the SWEEP workflow definition <strong>This overrides both of the above</strong></p>
+<h2 id='examples-of-a-container-based-workflows-where-overrides-are-defined-on-the-workflow-defintion-level'>Examples of a container-based workflows where overrides are defined on the workflow defintion level</h2><h3 id='simple-example'>Simple example</h3>
+<p>The workflow definition is <a href="examples/container_workflows/wf_def_overrides.json">examples/container_workflows/wf_def_overrides.json</a></p>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span>
+  <span class="s">"workflow_id"</span><span class="p">:</span> <span class="s">"batch_3"</span><span class="p">,</span>
+  <span class="s">"providers"</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">"tasks"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">"image_name"</span><span class="p">:</span> <span class="s">"task_sleep"</span><span class="p">,</span>
+      <span class="s">"image_tag"</span><span class="p">:</span> <span class="s">"latest"</span><span class="p">,</span>
+      <span class="s">"successors"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="s">"properties"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"position"</span><span class="p">:</span> <span class="s">"start"</span><span class="p">,</span>
+        <span class="s">"command"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s">"sh"</span><span class="p">,</span>
+          <span class="s">"-c"</span><span class="p">,</span>
+          <span class="s">"printenv USERNAME"</span>
+        <span class="p">],</span>
+        <span class="s">"environment"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s">"name"</span><span class="p">:</span> <span class="s">"USERNAME"</span><span class="p">,</span>
+            <span class="s">"value"</span><span class="p">:</span> <span class="s">"ka"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s">"name"</span><span class="p">:</span> <span class="s">"IND"</span><span class="p">,</span>
+            <span class="s">"value"</span><span class="p">:</span> <span class="s">"1"</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+</code></pre>
+<p>The optional task properties <strong>environment</strong> and <strong>command</strong> are used to specify information for the container the task is run in.</p>
+
+<p>Assuming that a container definition for some image with the name <strong>task_sleep</strong> and tag <strong>latest</strong> has already been registered to SWEEP:</p>
+
+<p>when this workflow is launched, task 1 will be run in a container and SWEEP will:</p>
+
+<ul>
+<li><p>set the two environment variables USERNAME and IND (overwriting any other defintion of these)</p></li>
+<li><p>overwrite the run command to $printenv USERNAME</p></li>
+</ul>
+<h3 id='dynamic-example'>Dynamic example</h3>
+<p>The task properties <strong>environment</strong> and <strong>command</strong> can also be specified as strings, in which case they must be valid expression that can be evaluated using eval()</p>
+
+<p>This can be used to e.g. let the outputs of the previous task determine the values:</p>
+
+<p>An example where a function-based task outputs information about how many container tasks should be launched, and what their environment variables should be:</p>
+
+<p>The workflow definition is <a href="examples/container_workflows/overrides_from_predecessor/wf_def_overrides_pred.json">examples/container_workflows/overrides_from_predecessor/wf_def_overrides_pred.json</a></p>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span>
+  <span class="s">"workflow_id"</span><span class="p">:</span> <span class="s">"batch_4"</span><span class="p">,</span>
+  <span class="s">"providers"</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">"tasks"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+      <span class="s">"id"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
+      <span class="s">"function_name"</span><span class="p">:</span> <span class="s">"prepFunc"</span><span class="p">,</span>
+      <span class="s">"successors"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">2</span>
+      <span class="p">],</span>
+      <span class="s">"properties"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"position"</span><span class="p">:</span> <span class="s">"start"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s">"image_name"</span><span class="p">:</span> <span class="s">"task_sleep"</span><span class="p">,</span>
+      <span class="s">"image_tag"</span><span class="p">:</span> <span class="s">"latest"</span><span class="p">,</span>
+      <span class="s">"successors"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="s">"properties"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"dynamic_multiplicity"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['num_inds']"</span><span class="p">,</span>
+        <span class="s">"partitioned_input"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['env_vars']"</span><span class="p">,</span>
+        <span class="s">"command"</span><span class="p">:</span> <span class="p">[</span><span class="s">"sh"</span><span class="p">,</span><span class="s">"-c"</span><span class="p">,</span> <span class="s">"printenv IND"</span><span class="p">],</span>
+        <span class="s">"environment"</span><span class="p">:</span> <span class="s">"predecessor_outputs['1']['env_vars']"</span>
+      <span class="p">}}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+
+</code></pre>
+<blockquote>
+<p>NOTE: the type of the &quot;environment&quot; and &quot;command&quot; value is: list of dict.
+In this case, we make sure our function prepFunc returns value so that
+&quot;predecessor_outputs[&#39;1&#39;][&#39;env_vars&#39;]&quot; (in combination with the &quot;partitioned_input&quot;) will contain a list for each subsequent task.</p>
+</blockquote>
+
+<p>The definition of the lambda function <strong>prepFunc</strong> is <a href="examples/container_workflows/overrides_from_predecessor/main.py">examples/container_workflows/overrides_from_predecessor/main.py</a></p>
+<pre class="highlight python tab-python"><code>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Received event: "</span> <span class="o">+</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+            <span class="n">response</span> <span class="o">=</span> <span class="p">{</span><span class="s">"num_inds"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="s">"env_vars"</span> <span class="p">:</span> <span class="p">[</span>
+                    <span class="p">[{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"IND"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">},</span> <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"VAR"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"hello"</span><span class="p">}],</span>
+                    <span class="p">[{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"IND"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"2"</span><span class="p">},</span> <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"VAR"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"hello"</span><span class="p">}],</span>
+                    <span class="p">[{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"IND"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"3"</span><span class="p">},</span> <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"VAR"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">:</span> <span class="s">"hello"</span><span class="p">}]</span>
+                <span class="p">]</span>
+                <span class="p">}</span>
+        <span class="k">return</span> <span class="n">response</span>
+
+
+</code></pre><h3 id='dynamic-example-with-static-output'>Dynamic example with static output</h3>
+<p>Since container-based tasks do not output any values to the workflow scheduler: the dictionary containing their output is generally empty.
+The only way to propagate information through the workflow via container-based tasks is to use <strong>static_output</strong>:</p>
+
+<p>An example based on the previous one, but with a 3rd task that gets information from task 2:</p>
+
+<p>The workflow definition is <a href="examples/container_workflows/static_output/wf_def_static_output.json">examples/container_workflows/static_output/wf_def_static_output.json</a></p>
+<pre class="highlight python tab-python"><code>
+<span class="p">{</span>
+  <span class="s">"workflow_id"</span><span class="p">:</span> <span class="s">"batch_5"</span><span class="p">,</span>
+  <span class="s">"providers"</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s">"tasks"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+      <span class="s">"id"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
+      <span class="s">"function_name"</span><span class="p">:</span> <span class="s">"prepFunc"</span><span class="p">,</span>
+      <span class="s">"successors"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">2</span>
+      <span class="p">],</span>
+      <span class="s">"properties"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"position"</span><span class="p">:</span> <span class="s">"start"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s">"image_name"</span><span class="p">:</span> <span class="s">"task_sleep"</span><span class="p">,</span>
+      <span class="s">"image_tag"</span><span class="p">:</span> <span class="s">"latest"</span><span class="p">,</span>
+      <span class="s">"successors"</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+      <span class="s">"properties"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"dynamic_multiplicity"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['num_inds']"</span><span class="p">,</span>
+        <span class="s">"partitioned_input"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['env_vars']"</span><span class="p">,</span>
+        <span class="s">"command"</span><span class="p">:</span> <span class="p">[</span><span class="s">"sh"</span><span class="p">,</span><span class="s">"-c"</span><span class="p">,</span> <span class="s">"printenv IND"</span><span class="p">],</span>
+        <span class="s">"environment"</span><span class="p">:</span> <span class="s">"predecessor_outputs['1']['env_vars']"</span><span class="p">,</span>
+        <span class="s">"static_output"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['1']['env_vars']"</span>
+      <span class="p">}},</span>
+        <span class="p">{</span>
+      <span class="s">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="s">"image_name"</span><span class="p">:</span> <span class="s">"task_sleep"</span><span class="p">,</span>
+      <span class="s">"image_tag"</span><span class="p">:</span> <span class="s">"latest"</span><span class="p">,</span>
+      <span class="s">"successors"</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+      <span class="s">"properties"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"follow_multiplicity"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">"command"</span><span class="p">:</span> <span class="p">[</span><span class="s">"sh"</span><span class="p">,</span><span class="s">"-c"</span><span class="p">,</span> <span class="s">"printenv IND"</span><span class="p">],</span>
+        <span class="s">"environment"</span><span class="p">:</span> <span class="s">"predecessor_outputs['2']['static_output']"</span><span class="p">,</span>
+        <span class="s">"static_output"</span> <span class="p">:</span> <span class="s">"predecessor_outputs['2']['static_output']"</span>
+      <span class="p">}},</span>
+        <span class="p">{</span>
+      <span class="s">"id"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="s">"image_name"</span><span class="p">:</span> <span class="s">"task_sleep"</span><span class="p">,</span>
+      <span class="s">"image_tag"</span><span class="p">:</span> <span class="s">"latest"</span><span class="p">,</span>
+      <span class="s">"successors"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="s">"properties"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"follow_multiplicity"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">"command"</span><span class="p">:</span> <span class="p">[</span><span class="s">"sh"</span><span class="p">,</span><span class="s">"-c"</span><span class="p">,</span> <span class="s">"printenv IND"</span><span class="p">],</span>
+        <span class="s">"environment"</span><span class="p">:</span> <span class="s">"predecessor_outputs['3']['static_output']"</span>
+      <span class="p">}}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+
+</code></pre>
+<p>The completed workflow looks like this (with the evaluated &quot;environment&quot; values annotated):</p>
+
+<div style="text-align:left"><img src="examples/container_workflows/static_output/result.png" width="600" height=300 /></div>
+
+<p>where tasks 2_A, 2_B, 2_C were run in separate containers with different values for environment variable IND.</p>
+<h1 id='running-of-function-based-workflow'>Running of function-based workflow</h1>
+<p>SWEEP supports FaaS based workflows. Example here delves into a sample FaaS based workflow.</p>
+<h2 id='first-add-register-your-main-tasks-aka-functions'>First, add/register your main tasks (aka Functions)</h2>
+<p>Create Zip file of the task </p>
+<pre class="highlight shell tab-shell"><code>zip -g sentinel_get_stats.zip main.py
+</code></pre>
+<p>currently all the main programs needs to be created with name as main.py, and driver function as handler (i.e def handler(env, context):...)
+Add any environmental variables to environment.json (keep it in the same folder)<br>
+The json needs to be in dictonary format, for eg. one for get_stats task</p>
+<pre class="highlight json tab-json"><code><span class="w">
+     </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"FILEPATH"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/tmp/"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"GEOJSON"</span><span class="p">:</span><span class="s2">"meadow.geojson"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CLOUD_COVER_PERCENTAGE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(0, 30)"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='upload-the-function'>Upload the function</h2><pre class="highlight python tab-python"><code>
+    <span class="n">ffile</span><span class="o">=</span><span class="s">'../get_stats.zip'</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">'sentinel_get_stats'</span>
+    <span class="n">envfile</span> <span class="o">=</span> <span class="s">'/Users/ajijohn/git/SWEEP-API/workflows/sentinel/tasks/sentinel_get_stats/environment.json'</span>
+    <span class="n">register_function</span><span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">sweep_client</span><span class="o">.</span><span class="n">upload_function</span><span class="p">(</span><span class="n">ffile</span><span class="o">=</span><span class="n">ffile</span><span class="p">,</span><span class="n">fname</span><span class="o">=</span><span class="n">name</span><span class="p">,</span><span class="n">envfile</span><span class="o">=</span><span class="n">envfile</span><span class="p">))</span> 
+
+
+</code></pre>
+<p>Likewise, create all the functions via API</p>
+<h2 id='register-the-workflow-definition'>Register the workflow definition</h2><pre class="highlight python tab-python"><code>
+    <span class="n">workflow_def_file</span> <span class="o">=</span> <span class="s">"workflow_defs/Sentinel_WFdef.json"</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">sweep_client</span><span class="o">.</span><span class="n">register_workflow</span><span class="p">(</span><span class="n">wffile</span><span class="o">=</span><span class="n">workflow_def_file</span><span class="p">)</span>
+
+</code></pre><h2 id='launch-and-monitor-the-workflow'>Launch and monitor the workflow</h2><pre class="highlight python tab-python"><code>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">sweep_client</span><span class="o">.</span><span class="n">launch_workflow</span><span class="p">(</span><span class="n">wid</span><span class="o">=</span><span class="s">"sentinel_workflow"</span><span class="p">)</span>
+    <span class="n">lid</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"launch_id"</span><span class="p">]</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">sweep_client</span><span class="o">.</span><span class="n">launch_status</span><span class="p">(</span><span class="n">wid</span><span class="o">=</span><span class="s">"sentinel_workflow"</span><span class="p">,</span> <span class="n">lid</span><span class="o">=</span><span class="n">lid</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre><h1 id='api-overview'>API Overview</h1><pre class="highlight plaintext"><code>#######################################################
+# REST API request and response are shown here        #
+# Token is required for all invocations               #
+#######################################################
+</code></pre>
+<p>The SWEEP Platform provides an innovative way to build, deploy and monitor serverless
+workflows. This API gives access to SWEEP&#39;s core Workflow Management System (WMS) engine.</p>
+
+<p>The SWEEP API has two focal areas:</p>
+
+<ul>
+<li>Managing Workflows</li>
+<li>Deploying tasks.</li>
+</ul>
+
+<p>The root for all SWEEP API requests is <em>https://api.sweep.run</em>.</p>
+<h2 id='authentication'>Authentication</h2>
+<p>API calls must include an Authorization header. The value of this header is your acess token.</p>
+<h3 id='headers'>Headers</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>Access token</td>
+</tr>
+</tbody></table>
+<h2 id='manage-workflows'>Manage Workflows</h2><h3 id='sweep-workflows'>SWEEP Workflows</h3>
+<p>SWEEP gives the ability to incrementally deploy a workflow, i.e. first the tasks, and then the definition encompassing thise tasks, and then running those workflows.</p>
+<h3 id='type-of-workflows'>Type of Workflows</h3>
+<p>SWEEP does not dfiientiate between the workflows based on tasks:</p>
+
+<ul>
+<li><strong>FaaS only Tasks:</strong> .</li>
+<li><strong>FaaS and CaaS based tasks:</strong> Mix of SWEEP .</li>
+</ul>
+<h3 id='list-workflows'>List Workflows</h3>
+<p>Use GET to list all workflows owned by the user.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/list_workflows/{userName}
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userName</td>
+<td>Name of the user</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w"> 
+ </span><span class="s2">"workflow_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+ </span><span class="s2">"sentinel_workflow"</span><span class="p">,</span><span class="w"> </span><span class="s2">"variant_calling_workflow"</span><span class="w">
+</span><span class="p">]}</span><span class="w">
+</span></code></pre><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Status of the call</td>
+</tr>
+<tr>
+<td>workflow_ids</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+</tbody></table>
+<h3 id='register-workflow'>Register Workflow</h3>
+<p>Use POST for registering a workflow. This will return the status and &#39;ID&#39; of the workflow once registered.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/register_workflow
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workflowdef</td>
+<td>Escaped workflow definition</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+
+<p>Successful response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">         </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"workflow_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ex2_a"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully created workflow ex2_a."</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Unsuccessful response - Workflow already exists</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">         </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid workflow: Workflow with workflow_id=ex2_a already exists."</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Unsuccessful response - Invalid workflow definition</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">          </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed interpreting the given definition as a workflow: &lt;Some error msg&gt;"</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workflow_id</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status OK or FAIL</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message related to registration</td>
+</tr>
+</tbody></table>
+<h2 id='launch-workflow'>Launch Workflow</h2>
+<p>Spawns a workflow in SWEEP.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/launch_workflow
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workflowid</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+
+<p>Success</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"workflow_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wid"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"launch_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"msg"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New launch ID = 1"</span><span class="w">
+             </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S3 request failed."</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-3'>Response</h3>
+<p>The API  launches the workflow. Every User can use the launch_status API to poll on the status.</p>
+<h2 id='workflow-status'>Workflow  Status</h2>
+<p>The workflow launch status returns the </p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/workflow_status
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workflowid</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch history for workflow sentinel_workflow: OK. </span><span class="se">\n</span><span class="s2">Workflow defintion for workflow sentinel_workflow: OK."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"workflow_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wid"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"launch_hist"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"ID"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Timestamp"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Status"</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"2019-08-27T22:53:55.221548"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FAILED"</span><span class="p">]],</span><span class="w">
+   </span><span class="s2">"wf_def"</span><span class="p">:</span><span class="w"> 
+   </span><span class="p">{</span><span class="s2">"workflow_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sentinel_workflow"</span><span class="p">,</span><span class="w"> 
+   </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"max_task_concurrency"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"max_task_runtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">18000</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"providers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+     </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"function_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sentinel_split_features"</span><span class="p">,</span><span class="w"> </span><span class="s2">"successors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="s2">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start"</span><span class="p">}},</span><span class="w"> 
+     </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"function_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sentinel_get_products"</span><span class="p">,</span><span class="w"> </span><span class="s2">"successors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="s2">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"static_input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOW-2DAYS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOW"</span><span class="p">},</span><span class="w"> </span><span class="s2">"dynamic_multiplicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"predecessor_outputs['1']['count']"</span><span class="p">,</span><span class="w"> </span><span class="s2">"partitioned_input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"predecessor_outputs['1']['index']"</span><span class="p">}},</span><span class="w"> 
+     </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">"image_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sentinel_download_product"</span><span class="p">,</span><span class="w"> </span><span class="s2">"image_tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"successors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="s2">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"follow_multiplicity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"dynamic_multiplicity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"predecessor_outputs['2']['count']"</span><span class="p">,</span><span class="w"> </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"predecessor_outputs['2']['products']"</span><span class="p">,</span><span class="w"> </span><span class="s2">"partitioned_input"</span><span class="p">:</span><span class="w"> </span><span class="s2">"predecessor_outputs['2']['products']"</span><span class="p">,</span><span class="w"> </span><span class="s2">"static_output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"predecessor_outputs['2']['products']"</span><span class="p">}},</span><span class="w">
+     </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s2">"function_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sentinel_get_stats"</span><span class="p">,</span><span class="w"> </span><span class="s2">"successors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="s2">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"follow_multiplicity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">"static_output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"predecessor_outputs['3']['static_output']"</span><span class="p">}},</span><span class="w">
+     </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"function_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sentinel_determine_flowering"</span><span class="p">,</span><span class="w"> </span><span class="s2">"successors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">6</span><span class="p">]},</span><span class="w"> 
+     </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s2">"function_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sentinel_end_workflow"</span><span class="p">,</span><span class="w"> </span><span class="s2">"successors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]}],</span><span class="w"> 
+     </span><span class="s2">"num_launches"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">}}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed to &lt;msg&gt;"</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>workflow_id</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+<tr>
+<td>launch_hist</td>
+<td>Status with timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='workflow-launch-status'>Workflow  Launch Status</h2>
+<p>Get the status of the workflow by launch</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/launch_status
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workflowid</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+<tr>
+<td>lid</td>
+<td>Launch id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"workflow_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wid"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"launch_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lid"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"launch_log"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">see</span><span class="w"> </span><span class="err">launch</span><span class="w"> </span><span class="err">log</span><span class="w"> </span><span class="err">structure</span><span class="w"> </span><span class="err">below</span><span class="p">},</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch log of launch 0 for workflow ex2_a: OK."</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>workflow_id</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+<tr>
+<td>launch_id</td>
+<td>Launch id</td>
+</tr>
+<tr>
+<td>launch_log</td>
+<td>see launch log structure below</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message stating the success or failure</td>
+</tr>
+</tbody></table>
+<h3 id='launch-log-dict-structure'>Launch log dict structure</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>launch_status</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+<tr>
+<td>launch_time</td>
+<td>Launch id</td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>see launch log structure below</td>
+</tr>
+<tr>
+<td>task_status</td>
+<td>list of dict {see task entry structure below}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Launch log structure</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>        <span class="p">{</span>
+        <span class="s2">"id"</span> <span class="p">:</span> <span class="nx">str</span>
+
+        <span class="p">...</span> <span class="nx">all</span> <span class="nx">the</span> <span class="nx">task</span> <span class="nx">info</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">workflow</span> <span class="nx">definition</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">properties</span><span class="p">,</span> <span class="nx">etc</span><span class="p">.)</span>
+
+        <span class="s2">"status"</span> <span class="p">:</span> <span class="nx">WAITING</span> <span class="o">|</span> <span class="nx">DELAYING</span> <span class="o">|</span> <span class="nx">READY</span> <span class="o">|</span> <span class="nx">RUNNING</span> <span class="o">|</span> <span class="nx">COMPLETED</span> <span class="o">|</span> <span class="nx">ERROR</span>
+        <span class="s2">"run_log"</span><span class="p">:</span> <span class="err">'</span><span class="p">{</span>
+                    <span class="s2">"report"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"max_memory_used"</span><span class="p">:</span> <span class="kr">float</span> <span class="p">(</span><span class="k">in</span> <span class="nx">bits</span><span class="p">),</span>
+                        <span class="s2">"billed_duration"</span><span class="p">:</span> <span class="kr">float</span> <span class="p">(</span><span class="k">in</span> <span class="nx">seconds</span><span class="p">),</span>
+                        <span class="s2">"duration"</span><span class="p">:</span> <span class="kr">float</span> <span class="p">(</span><span class="k">in</span> <span class="nx">seconds</span><span class="p">),</span>
+                        <span class="s2">"memory_size"</span><span class="p">:</span> <span class="kr">float</span> <span class="p">(</span><span class="k">in</span> <span class="nx">bits</span><span class="p">)</span>
+                        <span class="p">},</span>
+                    <span class="s2">"stdout"</span><span class="p">:</span> <span class="nx">str</span>
+                    <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre><h2 id='delete-workflow'>Delete Workflow</h2>
+<p>Deleting the workflow deletes the workflow definition and all the logs related to the past runs.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/delete_workflow
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workflow_id</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+</blockquote>
+
+<p>Success</p>
+<pre class="highlight json tab-json"><code><span class="w">     </span><span class="p">{</span><span class="s2">"workflow_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ex2_a"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully deleted workflow ex2_a."</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Failure</p>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error in deleting workflow ex2_a &lt;err message&gt;'}
+
+</span></code></pre><h3 id='response-6'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>workflow_id</td>
+<td>&#39;id&#39; in use by SWEEP</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message stating the success or failure</td>
+</tr>
+</tbody></table>
+<h2 id='tasks-functions'>Tasks (Functions)</h2><h2 id='list-functions'>List functions</h2>
+<p>GET the list of functions registered with SWEEP</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/list_functions
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+</blockquote>
+
+<p>Success</p>
+<pre class="highlight javascript tab-javascript"><code>    <span class="p">{</span><span class="s2">"status"</span> <span class="p">:</span> <span class="s2">"OK"</span><span class="p">,</span>
+          <span class="s2">"msg"</span> <span class="p">:</span> <span class="s2">"Successfully fetched list of lambda functions"</span><span class="p">,</span>
+          <span class="s2">"functions"</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nx">list</span> <span class="nx">of</span> <span class="nx">dicts</span><span class="o">&gt;</span><span class="p">}</span>
+</code></pre>
+<p>Failure</p>
+<pre class="highlight json tab-json"><code><span class="w">     </span><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error in fetching functions: error msg"</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='response-7'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message stating the success or failure</td>
+</tr>
+<tr>
+<td>functions</td>
+<td><list of dicts></td>
+</tr>
+</tbody></table>
+<h3 id='function-dictionary'>Function dictionary</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h2 id='upload-function'>Upload function</h2>
+<p>Uploads a function to SWEEP</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>POST /v1/core/upload_function
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>functionname</td>
+<td>Name of the function - relates to the task name in WF definition</td>
+</tr>
+<tr>
+<td>functiondescription</td>
+<td>Description of the function</td>
+</tr>
+<tr>
+<td>env</td>
+<td>Dict of environmental variables</td>
+</tr>
+</tbody></table>
+<h4 id='payload'>Payload</h4>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content‐Type</td>
+<td>Set to <code>application/zip</code></td>
+</tr>
+<tr>
+<td>Content‐Length</td>
+<td>Size of file in bytes</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+</blockquote>
+
+<p>Success</p>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully uploaded function."</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Failure</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error in uploading function."</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='response-8'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message stating the success or failure</td>
+</tr>
+</tbody></table>
+<h2 id='delete-function'>Delete function</h2>
+<p>Deletes the function</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/delete_function
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>functionname</td>
+<td>Name of the function - relates to the task name in WF definition</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example JSON Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="s2">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully deleted function f"</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Failure</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error in deleting function f."</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='response-9'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message stating the success or failure</td>
+</tr>
+</tbody></table>
+<h2 id='list-container-definitions-or-tasks'>List Container definitions (or tasks)</h2>
+<p>Lists all the container defs</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/list_container_defs
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message stating the success or failure</td>
+</tr>
+<tr>
+<td>container_defs</td>
+<td><list of dicts></td>
+</tr>
+</tbody></table>
+<h3 id='response-10'>Response</h3>
+<p>The list of container definitions are listed.</p>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"OK"</span><span class="p">,</span> <span class="s2">"msg"</span><span class="p">:</span> <span class="s2">"Succeeded in fetching container defintions."</span><span class="p">,</span>
+ <span class="s2">"container_defs"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"cpu_units"</span><span class="p">:</span> <span class="s2">"256"</span><span class="p">,</span> <span class="s2">"memory"</span><span class="p">:</span> <span class="s2">"512"</span><span class="p">,</span> <span class="s2">"image_name"</span><span class="p">:</span> <span class="s2">"naip_get_stats"</span><span class="p">,</span> <span class="s2">"image_tag"</span><span class="p">:</span> <span class="s2">"latest"</span><span class="p">,</span> <span class="s2">"imagePushedAt"</span><span class="p">:</span> <span class="s2">"2019-08-03 13:44:47-07:00"</span><span class="p">,</span> <span class="s2">"imageSizeInBytes"</span><span class="p">:</span> <span class="mi">302140350</span><span class="p">},</span> 
+ <span class="p">{</span><span class="s2">"cpu_units"</span><span class="p">:</span> <span class="s2">"256"</span><span class="p">,</span> <span class="s2">"memory"</span><span class="p">:</span> <span class="s2">"512"</span><span class="p">,</span> <span class="s2">"image_name"</span><span class="p">:</span> <span class="s2">"sentinel_download_product"</span><span class="p">,</span> <span class="s2">"image_tag"</span><span class="p">:</span> <span class="s2">"latest"</span><span class="p">,</span> <span class="s2">"imagePushedAt"</span><span class="p">:</span> <span class="s2">"2019-08-05 15:55:52-07:00"</span><span class="p">,</span> <span class="s2">"imageSizeInBytes"</span><span class="p">:</span> <span class="mi">302137265</span><span class="p">}</span>
+<span class="p">]}</span>
+</code></pre>
+<p>Failure</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error in fetching container definitions: error msg."</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='container-definitions-dictionary'>Container definitions dictionary</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h2 id='upload-container-definitions-or-tasks'>Upload Container definitions (or tasks)</h2>
+<p>Container tasks upload SWEEP is supported by docker.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/core/list_container_defs
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OK or FAIL</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>Message stating the success or failure</td>
+</tr>
+<tr>
+<td>container_defs</td>
+<td><list of dicts></td>
+</tr>
+</tbody></table>
+<h3 id='response-11'>Response</h3>
+<p>The list of container definitions are listed.</p>
+<pre class="highlight javascript tab-javascript"><code> <span class="p">{</span><span class="s2">"status"</span> <span class="p">:</span> <span class="s2">"OK"</span><span class="p">,</span>
+          <span class="s2">"msg"</span> <span class="p">:</span> <span class="s2">"Succeeded in fetching container defintions."</span><span class="p">,</span>
+          <span class="s2">"container_defs"</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nx">list</span> <span class="nx">of</span> <span class="nx">container</span> <span class="nx">definition</span> <span class="nx">dicts</span><span class="o">&gt;</span><span class="p">}</span>
+
+</code></pre>
+<p>Failure</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAIL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error in fetching container definitions: error msg."</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='container-definitions-dictionary-2'>Container definitions dictionary</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
