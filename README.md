@@ -12,10 +12,10 @@ This project houses source code/examples for the SWEEP Platform documentation. M
 Following commands assume MacOS (please feel free to submit a pull-request for Windows)
 
 ```console
-git clone ...SWEEP-DOCS
-cd SWEEP-DOCS
-bundle install
-bundle exec middleman server
+$ git clone ...SWEEP-DOCS
+$ cd SWEEP-DOCS
+$ bundle install
+$ bundle exec middleman server
 ```
 
 Brings up the static website at http://localhost:4567. 
@@ -34,15 +34,15 @@ task :default => [:build]
 To build the site i.e. index.html, CSS etc. do
 
 ```console
-rake build
+$ rake build
 ```
 
 The above command puts the contents of the site in the 'build' directory, next step is to make the static files under the 'gh-pages' branch. Goal is that we want the site to be hosted using GitHub.
 
 ```console
-cd build
+$ cd build
 $ git checkout -b gh-pages
-rake publish
+$ rake publish
 ```
 
 The content is pushed to gh-pages branch, which is then linked to the custom domain [More here](https://help.github.com/en/articles/using-a-custom-domain-with-github-pages).  
