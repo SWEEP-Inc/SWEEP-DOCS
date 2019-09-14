@@ -20,24 +20,31 @@ We have language bindings in Python, and are working on JavaScript! You can view
 A workflow is a collection of tasks, represented as a directed acyclic graph (DAG), where an edge from task A to task B indicates
 that task B can start after task A is finished. The structure and syntax of workflow definitions are defined below.
 
-## Definition of **workflow**:
+## Definition of **workflow**
+
+> workflow definition
+
+
 ```python
 {
     'workflow_id' : str,
     'config' : dict,
-    'tasks' : task_entry list
+    'tasks' : dict list
 }
 ```
 
 
 * **workflow_id**: unique identifier of the workflow
 
-* **config**: optional workflow configuration dict, contains directives for workflow orchestration
+* **config**: optional **workflow configuration** dict, contains directives for workflow orchestration
 
-* **tasks**: list of **task_entry** dicts, each representing a task
+* **tasks**: list of **task definition** dicts, each representing a task
 
 
-## Definition of **workflow configuration**:
+## Definition of workflow configuration
+
+> workflow configuration
+
 ```python
 {
     "max_task_concurrency" : int,
@@ -50,7 +57,10 @@ that task B can start after task A is finished. The structure and syntax of work
 * **max_task_runtime**: task timeout in seconds
 
 
-## Defintion of **task_entry**:
+## Defintion of tasks
+
+> task definition
+
 ```python
 {
     "id" : str,
@@ -62,7 +72,7 @@ that task B can start after task A is finished. The structure and syntax of work
 }
 ```
 
-* **id**: is a unique identifier
+* **id**:  unique identifier
 
 * **function_name**: for function-based tasks: the name of the function that the task runs. the function must be registered in SWEEP.
 
@@ -72,30 +82,33 @@ that task B can start after task A is finished. The structure and syntax of work
 
 * **successors**: a list of tasks that should be invoked when the task finishes. this defines the DAG representing the workflow.
 
-* **properties**: optional task properties dict
+* **properties**: optional **task properties** dict
 
+## Defintion of **task properties**
 
-> ### Task properties
-> Task properties are static values that are associated with a task. This means that they do not change over time,
-> they are associated with a workflow (unlike task attributes described below, which are associated with a particular launch of the workflow).
+> task properties
 
-## Defintion of **task properties**:
-```python
+    ```python
 {
     "position" : str,
     "delay" : int,
     "static_input" : object,
     "multiplicity" : int
     "deploy_conditions" : expr list,
-    "dynamic_multiplicity" : expr,
-    "partitoned_input" : expr,
-    "follow_multiplicity" : str,
-    "environment" : dict list,
-    "command" : str list
+    "scatter" : expr,
+    "follow" : str,
+    "environment" : dict list | expr,
+    "command" : str list,
+    "static_output" : expr
 
 
 }
-```
+    ```
+
+
+> ### Task properties
+> Task properties are static values that are associated with a task. This means that they do not change over time,
+> they are associated with a workflow (unlike task attributes described below, which are associated with a particular launch of the workflow).
 
 
 * **position**: the position in the task graph. used to define the starting task.
@@ -105,9 +118,8 @@ that task B can start after task A is finished. The structure and syntax of work
 * **static_input**: input to the task that is independent of the launch, other tasks, etc.
 * **multiplicity**: specifies a number of times a task should be replicated.
 * **deploy_conditions**: list of conditions in the form of expressions depending on the output of this task predecessors that must be fulfilled in order for the task to be launched. if all predecessors have finished but any of the conditions is not true, the task fails.
-* **dynamic_multiplicity**: specifies a number of times a task should be replicated with an expression that depends on the output of a predecessor task.
-* **partitoned_input**: only valid for tasks with multiplicity or dynamic_multiplicity: an expression that indicates which part of a predecessors output should be split between the multiple tasks. It is assumed that the output of the predecessor contains the specified item, and that it is a list with x number of items, where x is the multiplicity of the successor.
-* **follow_multiplicity**: specifies a predecessor ID whose multiplicity to follow. If that predecessor is expanded to some multiplicity, this task is expanded to the same multiplicity, with one new task following each of the expanded tasks of the predecessor.
+* **scatter**: an expression that indicates which part of a predecessors output should be scattered over: this output is assumed to be of list-type, this task will be replicated for each element of this list, each new task replica receiving one element as input.
+* **follow**: specifies a predecessor ID (P) whose replication factor this task (T) is to follow. A replica Ti of this task will gather all aggregatedd output of the corresponding replica Pi of the predecessor. See example below how scatter and follow can be used to define multi-level scatter and gather behaviour.
 * **environment**: only valid for container-based tasks. specifies environment variables the image, overriding the one specified when building the image and the one in the container definition. one dictionary per environment variable, the dictionary must contains 2 items: "name" and
 "value"
 
@@ -136,8 +148,7 @@ that task B can start after task A is finished. The structure and syntax of work
 
 ### The properties that must be dynamic are:
 * **deploy_conditions**
-* **dynamic_multiplicity**
-* **partitioned_input**
+* **scatter**
 
 ### The properties that may be dynamic are:
 If their value is of type str: they are treated as dynamic, to be evaluated
@@ -145,8 +156,9 @@ Else (e.g. if the type is an int) : that specifies the value
 
 * **environment**
 * **static_output**
+* **static_output**
 
-(The last one is a bit un-intuitive: but the *existence* of the output is static (predetermined), the actual *value* is dynamic)
+## Examples
 
 ###  Example definition of a workflow:
 See [examples/workflow.json](examples/workflow.json)
@@ -164,7 +176,7 @@ See [examples/workflow.json](examples/workflow.json)
 }
 ```
 
-## DAG representation of this workflow with deploy conditions:
+### DAG representation of this workflow with deploy conditions:
 
 <div style="text-align:left"><img src="images/example_wf_DAG.png" width="400" height=300 /></div>
 
@@ -183,7 +195,7 @@ See [examples/workflow.json](examples/workflow.json)
 ```
 
 
-## DAG representation of this workflow with a task with multiplicity 3:
+### DAG representation of this workflow with a task with multiplicity 3:
 The task with id 2 that had multiplicity 3 is turned into 3 tasks: 2_A, 2_B and 2_C.
 
 All of these will be launched when task 1 is completed.
@@ -229,7 +241,7 @@ Then task **2** will be expanded to tasks **2_A**, **2_B**, **2_C**, each receiv
 ```
 
 
-## DAG representation of this workflow with a dynamically replicated task:
+### DAG representation of this workflow with a dynamically replicated task:
 The task with id **2** has dynamic multiplicity.
 
 <div style="text-align:left"><img src="images/example_wd_DAG_dyn_A.png" width="400" height=300 /></div>
@@ -261,7 +273,7 @@ If the function **firstFunc** generates the same output as the examle above, and
 Then task **3** will be expanded to tasks **3_A**, **3_B**, **3_C**, each of which becomes a successor of one of the tasks expanded from task **2**:
 
 
-## DAG representation of this workflow with a dynamically replicated task and follow_multiplicity:
+### DAG representation of this workflow with a dynamically replicated task and follow_multiplicity:
 The task with id **2** has dynamic multiplicity.
 
 <div style="text-align:left"><img src="images/example_wf_DAG_follow_A.png" width="400" height=300 /></div>
@@ -299,7 +311,7 @@ If the function **firstFunc** generates the same output as the examle above, and
 Then task **3** will be expanded to tasks **3_A**, **3_B**, **3_C**, each of which becomes a successor of one of the tasks expanded from task **2**:
 
 
-## DAG representation of the more complicated follow_multiplicity example:
+### DAG representation of the more complicated follow_multiplicity example:
 
 <div style="text-align:left"><img src="images/example_wf_DAG_follow2_A.png" width="400" height=300 /></div>
 
