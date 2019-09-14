@@ -439,7 +439,7 @@ When task **1** completes, task **2** can be expanded. In addition, task **3** c
 
 The properties **scatter** and **follow** can be used to define custom multi-layer scatter and gather structure in workflows:
 
-<div style="text-align:left"><img src="examples/example5/example5.png" width="600" height=724 /></div>
+<div style="text-align:left"><img src="examples/example5/example5.png" width="900" height=1086 /></div>
 
 
 See  [examples/example5](examples/example5) for the workflow definitions.
