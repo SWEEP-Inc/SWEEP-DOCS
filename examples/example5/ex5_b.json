@@ -1,0 +1,39 @@
+{
+  "workflow_id": "ex5_b",
+  "providers": [],
+  "tasks": [
+    {
+      "id": "1",
+      "function_name": "myFunc",
+      "successors": [
+        "2"
+      ],
+      "properties": {
+        "position": "start"
+      }
+    },
+    {
+      "id": "2",
+      "function_name": "myFunc",
+      "successors":["3"],
+      "properties": {
+        "dynamic_multiplicity": "predecessor_outputs['1']['buckets'][0]['count']",
+        "scatter": "predecessor_outputs['1']['tile']"
+      }
+    },
+
+    {"id" : "3", "function_name" : "myFunc", "successors" : ["4"],
+      "properties" : {"follow" : "2","dynamic_multiplicity" : "predecessor_outputs['2']['buckets'][0]['count']", "scatter" : "predecessor_outputs['2']['tile']"}},
+
+
+    {"id" : "4", "function_name" : "multFunc", "successors" : ["5"] ,
+      "properties" : {"follow" : "3","dynamic_multiplicity" : "predecessor_outputs['3']['buckets'][0]['count']", "scatter" : "predecessor_outputs['3']['tile']" }},
+
+    {"id" : "5", "function_name" : "myFunc", "successors" : ["6"] , "properties" : {"follow" : "4"}},
+
+    {"id" : "6", "function_name" : "myFunc", "successors" : []}
+
+
+  ]
+}
+

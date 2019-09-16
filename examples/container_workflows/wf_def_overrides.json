@@ -1,0 +1,30 @@
+{
+  "workflow_id": "batch_3",
+  "providers": [],
+  "tasks": [
+    {
+      "id": 1,
+      "image_name": "task_sleep",
+      "image_tag": "latest",
+      "successors": [],
+      "properties": {
+        "position": "start",
+        "command": [
+          "sh",
+          "-c",
+          "printenv USERNAME"
+        ],
+        "environment": [
+          {
+            "name": "USERNAME",
+            "value": "ka"
+          },
+          {
+            "name": "IND",
+            "value": "1"
+          }
+        ]
+      }
+    }
+  ]
+}

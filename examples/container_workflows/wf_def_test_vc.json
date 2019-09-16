@@ -1,0 +1,6 @@
+{ "workflow_id" : "test_vc",
+  "providers" : [],
+  "tasks" : [
+    {"id" : 1, "image_name" : "task_vc", "image_tag" :"latest", "successors" : [], "properties" : {"position" : "start"}}
+  ]
+}

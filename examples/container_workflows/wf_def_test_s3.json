@@ -1,0 +1,8 @@
+{ "workflow_id" : "test_s3",
+  "providers" : [],
+  "tasks" : [
+    {"id" : 1, "image_name" : "task_s3", "image_tag" :"latest", "successors" : [2,3], "properties" : {"position" : "start"}},
+    {"id" : 2, "image_name" : "task_s3", "image_tag" :"latest", "successors" : []},
+    {"id" : 3, "image_name" : "task_s3", "image_tag" :"latest", "successors" : []}
+  ]
+}
