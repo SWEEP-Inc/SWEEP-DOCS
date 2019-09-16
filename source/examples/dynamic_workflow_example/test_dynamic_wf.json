@@ -1,7 +1,0 @@
-{ "workflow_id" : "test_mult_dynamic",
-  "providers" : [],
-  "tasks" : [
-    {"id" : "1", "function_name" : "myFunc", "successors" : ["2"], "properties" : {"position" : "start"}},
-    {"id" : "2", "function_name" : "multFunc", "successors" : ["3"], "properties" : {"dynamic_multiplicity" : "predecessor_outputs['1']['buckets'][0]['count']", "partitioned_input" : "predecessor_outputs['1']['tile']"}},
-    {"id" : "3", "function_name" : "myFunc", "successors" : []}]
-}
