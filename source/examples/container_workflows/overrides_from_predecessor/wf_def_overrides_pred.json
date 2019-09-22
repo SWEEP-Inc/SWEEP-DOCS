@@ -1,0 +1,27 @@
+{
+  "workflow_id": "batch_4",
+  "providers": [],
+  "tasks": [
+        {
+      "id": "1",
+      "function_name": "prepFunc",
+      "successors": [
+        2
+      ],
+      "properties": {
+        "position": "start"
+      }
+    },
+    {
+      "id": 2,
+      "image_name": "task_sleep",
+      "image_tag": "latest",
+      "successors": [],
+      "properties": {
+        "dynamic_multiplicity" : "predecessor_outputs['1']['num_inds']",
+        "partitioned_input" : "predecessor_outputs['1']['env_vars']",
+        "command": ["sh","-c", "printenv IND"],
+        "environment": "predecessor_outputs['1']['env_vars']"
+      }}
+  ]
+}
