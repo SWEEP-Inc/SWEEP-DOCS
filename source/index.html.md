@@ -27,8 +27,6 @@ And the property "dynamic_multiplicity" is no longer used. The number that a tas
 The values of the properties do not need to be changed.
 
 
-
-
 # Defining workflows
 
 A workflow is a collection of tasks, represented as a directed acyclic graph (DAG), where an edge from task A to task B indicates

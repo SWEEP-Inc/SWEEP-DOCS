@@ -1,0 +1,34 @@
+{
+  "workflow_id": "example3",
+  "config": {},
+  "tasks": [
+    {
+      "id": "1",
+      "function_name": "firstFunc",
+      "successors": [
+        "2"
+      ],
+      "properties": {
+        "position": "start"
+      }
+    },
+    {
+      "id": "2",
+      "function_name": "multFunc",
+      "successors": [
+        "3"
+      ],
+      "properties": {
+        "scatter": "predecessor_outputs['1']['tile']"
+      }
+    },
+    {
+      "id": "3",
+      "function_name": "otherFunc",
+      "successors": [],
+      "properties": {
+        "follow": "2"
+      }
+    }
+  ]
+}
