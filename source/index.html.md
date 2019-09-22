@@ -14,6 +14,20 @@ Welcome to the SWEEP Docs! You can use our SDK to access SWEEP endpoints or code
 
 We have language bindings in Python, and are working on JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language (only Python where applicable) of the examples with the tabs in the top right.
 
+## !!! changes to the workflow definition !!!
+
+Some changes have been made to the structure of the workflow definition. If you have old workflows from prior to this you will have to make the followingchanges, and re-upload the workflow definitions:
+
+The following **task property names** need to be changed:
+1. "follow_multiplicity" --> "follow"
+2. "partitioned_input" ---> "scatter"
+
+And the property "dynamic_multiplicity" is no longer used. The number that a task is expanded to is decied by the length of the list specified to "scatter"*[]:
+
+The values of the properties do not need to be changed.
+
+
+
 
 # Defining workflows
 
