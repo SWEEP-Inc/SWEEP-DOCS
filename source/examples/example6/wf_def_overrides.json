@@ -1,11 +1,15 @@
 {
-  "workflow_id": "batch_3",
-  "providers": [],
+  "workflow_id": "wf_overrides",
+  "config": {},
   "tasks": [
     {
       "id": 1,
-      "image_name": "task_sleep",
-      "image_tag": "latest",
+      "execution_configurations" : [
+        {
+          "container_def_id" : "cdef_hello_world",
+          "priority" : 1
+        }
+      ],
       "successors": [],
       "properties": {
         "position": "start",

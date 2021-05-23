@@ -13,14 +13,16 @@ def handler(event, context):
 	:return: (dict)
 	'''
 	predecessor_outputs = event['predecessor_outputs']
+
 	for id in predecessor_outputs.keys():
 		print("predecessor {} returned {}".format(str(id), str(predecessor_outputs[id])))
+
 	static_input = event['static_input']
 
-	# fill out dict with whatever - no requirements on structure
+	# Fill out dict with whatever - no requirements on structure.
 	out_dict = {}
 
-	# All exceptions should be handled and added to out_dict if they are to be seen in the local log
+	# All exceptions should be handled and added to out_dict if they are to be seen in the SWEEP logs.
 	try:
 		# do something
 		x = static_input["some_key"]

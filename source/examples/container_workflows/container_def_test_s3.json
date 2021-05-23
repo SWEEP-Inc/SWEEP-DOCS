@@ -1,5 +1,0 @@
-{
-  "image_name": "task_s3",
-  "image_tag": "latest",
-  "cpu_units" : "256",
-  "memory" : "512"}
