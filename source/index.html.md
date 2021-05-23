@@ -47,8 +47,8 @@ that task B can start after task A is finished. The structure and syntax of work
 
 ```python
 {
-    "max_task_concurrency" : int,
-    "max_task_runtime" : int
+    'max_task_concurrency' : int,
+    'max_task_runtime' : int
 }
 ```
 
@@ -99,16 +99,16 @@ Functions and containers are the two types of executables supported by SWEEP.
 
 ```python
 {
-    "position" : str,
-    "delay" : int,
-    "static_input" : object,
-    "multiplicity" : int
-    "deploy_conditions" : expr list,
-    "scatter" : expr,
-    "follow" : str,
-    "environment" : dict list | expr,
-    "command" : str list,
-    "static_output" : expr
+    'position' : str,
+    'delay' : int,
+    'static_input' : object,
+    'multiplicity' : int
+    'deploy_conditions' : expr list,
+    'scatter' : expr,
+    'follow' : str,
+    'environment' : dict list | expr,
+    'command' : str list,
+    'static_output' : expr
 }
 ```
 
@@ -119,7 +119,7 @@ Functions and containers are the two types of executables supported by SWEEP.
 
 
 * **position**: the position in the task graph. used to define the starting task.
-> There must be exactly one task with the property **"position" : "start"**. This will be the first task that is executed, and all other tasks should be on a path from the start task in the DAG representation.
+> There must be exactly one task with the property **'position' : 'start'**. This will be the first task that is executed, and all other tasks should be on a path from the start task in the DAG representation.
 
 * **delay**: time in seconds that a task should wait before being launched. the delay begins when the task is otherwise ready to lauch, after all its predecessors have finished.
 
@@ -133,20 +133,20 @@ Functions and containers are the two types of executables supported by SWEEP.
 
 * **follow**: specifies a predecessor ID (P) whose replication factor this task (T) is to follow. A replica Ti of this task will gather all aggregatedd output of the corresponding replica Pi of the predecessor. See example below how scatter and follow can be used to define multi-level scatter and gather behaviour.
 
-* **environment**: only valid for container-based tasks. specifies environment variables the image, overriding the one specified when building the image and the one in the container definition. one dictionary per environment variable, the dictionary must contains 2 items: "name" and
-"value"
+* **environment**: only valid for container-based tasks. specifies environment variables the image, overriding the one specified when building the image and the one in the container definition. one dictionary per environment variable, the dictionary must contains 2 items: 'name' and
+'value'
 
 * **command**: only valid for container-based tasks. specifies a command to run in the image, overriding the one specified when building the image and the one in the container definition.
 
-* **static_output**: specfies a pre-determined item in the task's output. it will appear in the output-dictionary of a task with the key "static_output", along with any other output that the actual task generates. **NOTE:** *unlike static_input, the *value* must not be determined before launch: static_output may be a str, in which case it is considered a dynamic property (see [Dynamic task properties](#dynamic-task-properties)), meaning it can e.g. specify a value in terms of the predecessor outputs.*
+* **static_output**: specfies a pre-determined item in the task's output. it will appear in the output-dictionary of a task with the key 'static_output', along with any other output that the actual task generates. **NOTE:** *unlike static_input, the *value* must not be determined before launch: static_output may be a str, in which case it is considered a dynamic property (see [Dynamic task properties](#dynamic-task-properties)), meaning it can e.g. specify a value in terms of the predecessor outputs.*
 
 
 >Example of **environment** property:
 
 ```python
-"environment" : [
-                {"name": "EVAR1", "value": "1"},
-                {"name": "EVAR2", "value": "hello"}
+'environment' : [
+                {'name': 'EVAR1', 'value': '1'},
+                {'name': 'EVAR2', 'value': 'hello'}
               ]
 ```
 
@@ -191,7 +191,7 @@ A destination definition contains all the necessary information to execute a tas
 ```python
   {
       'id' : str,
-      'cloud_provider' : "AWS" | "Azure",
+      'cloud_provider' : 'AWS' | 'Azure',
        ... the additional elements are cloud provider-dependent, see sections below ...
   }
 ```
@@ -209,14 +209,14 @@ required:
 ```python
   {
       'id' : str,
-      'cloud_provider' : "AWS",
-       credentials : {profile_name : str , aws_account_id : str}
-       aws_region : str
-       aws_ecs_iam_role : str
-       aws_fargate_cluster : str
-       aws_cluster_vpc_subnet_1 : str
-       aws_cluster_vpc_subnet_2 : str
-       aws_lambda_iam_role : str
+      'cloud_provider' : 'AWS',
+      'credentials' : {profile_name : str , aws_account_id : str}
+      'aws_region' : str
+      'aws_ecs_iam_role' : str
+      'aws_fargate_cluster' : str
+      'aws_cluster_vpc_subnet_1' : str
+      'aws_cluster_vpc_subnet_2' : str
+      'aws_lambda_iam_role' : str
 
   }
 ```
@@ -243,10 +243,10 @@ required:
   {
       'id' : str,
       'cloud_provider' : 'Azure',
-       'credentials' : {'azure_auth_file':str}
-       'azure_region' : str
-       'azure_resource_group' : str
-       'azure_container_registry' : str
+      'credentials' : {'azure_auth_file':str}
+      'azure_region' : str
+      'azure_resource_group' : str
+      'azure_container_registry' : str
   }
 ```
 
@@ -300,7 +300,7 @@ required:
 
 optional:
 
-* **environment_variables:** environment variables, e.g. {"EVAR1" : "test"}
+* **environment_variables:** environment variables, e.g. {'EVAR1' : 'test'}
 
 * **description:** string describing the function
 
@@ -426,16 +426,16 @@ Both of these can be set
 
 ```python
 {
-  "predecessor_outputs": {
-    "1": {
-      "msg": "I completed successfully"
+  'predecessor_outputs': {
+    '1': {
+      'msg': 'I completed successfully'
     },
-    "2": {
-      "buckets": 10,
-      "static_output": 5
+    '2': {
+      'buckets': 10,
+      'static_output': 5
     }
   },
-  "static_input": {}
+  'static_input': {}
 }
 ```
 
@@ -472,7 +472,7 @@ Container-based tasks behave just like function-based tasks in a workflow, excep
 ## Setting up the API
 
 ```python
-    user = "username"
+    user = 'username'
     key = 'pwd'
     url ='url'
 
@@ -487,10 +487,10 @@ See [Creating destinations](#creating-destinations) for information on what the 
 
 ```python
 
-    response = sweep_client.register_destination(dfile="../path/to/def_dest1.json", user = user)
+    response = sweep_client.register_destination(dfile='../path/to/def_dest1.json', user = user)
     print(response)
 
-    > {"status": "OK", "msg": "Successfully registered destinaiton dest1."}
+    > {'status': 'OK', 'msg': 'Successfully registered destinaiton dest1.'}
 
 ```
 
@@ -515,11 +515,11 @@ See [Creating destinations](#creating-destinations) for information on what the 
 ```python
 
     response = sweep_client.upload_function_def(
-	    function_def_file="examples/hello_world_function/fdef_hello_world.json",
-	    function_code_file="examples/hello_world_function/hello_world.zip",
+	    function_def_file='examples/hello_world_function/fdef_hello_world.json',
+	    function_code_file='examples/hello_world_function/hello_world.zip',
 	    user = user)
 
-    > {"status": "OK", "msg": "Successfully uploaded function hello_world."}
+    > {'status': 'OK', 'msg': 'Successfully uploaded function hello_world.'}
 
 ```
 
@@ -528,7 +528,7 @@ See [Creating destinations](#creating-destinations) for information on what the 
 
 #### Step 1: Create a docker image and compress it
 
-[examples/hello_world_container/hello_world](examples/hello_world_container/hello_world) contains files for creating a simple docker image that prints "hello world".
+[examples/hello_world_container/hello_world](examples/hello_world_container/hello_world) contains files for creating a simple docker image that prints 'hello world'.
 
 The script [examples/hello_world_container/docker_cmds_hello_world.sh](examples/hello_world_container/docker_cmds_hello_world.sh) contains commands
 to build the image, run it locally and display its exit code, and compress it to a tar archive:
@@ -552,14 +552,14 @@ A container definition for the hello world image is in [examples/hello_world_con
 Use the SWEEP-API to upload the container definition:
 
 ```python
-    container_def_file = "examples/hello_world_container/container_def_hello_world.json"
+    container_def_file = 'examples/hello_world_container/container_def_hello_world.json'
     response = sweep_client.upload_container_def(
-    	container_def_file="examples/hello_world_container/cdef_hello_world.json",
-    	container_code_file="examples/hello_world_container/hello_world.tar",
+    	container_def_file='examples/hello_world_container/cdef_hello_world.json',
+    	container_code_file='examples/hello_world_container/hello_world.tar',
 	    user = user)
 
     print(response)
-    > {"status": "OK", "msg": "Started uploading image."}
+    > {'status': 'OK', 'msg': 'Started uploading image.'}
 ```
 
 **Make sure the images you push are such that they return the exit code 0 if they run successfully**
@@ -576,23 +576,23 @@ your image and printing the environment variable ?, which contains the exit code
 
 ```python
     response = sweep_client.register_workflow(
-        wffile="examples/hello_world_workflow/workflow_def_hello_world.json",
+        wffile='examples/hello_world_workflow/workflow_def_hello_world.json',
         user = user)
 
     print(response)
-    > "{'workflow_id': 'wfdef_hello_world', 'status' : 'OK', 'msg' : 'Successfully created workflow wfdef_hello_world for user username.'}"
+    > '{'workflow_id': 'wfdef_hello_world', 'status' : 'OK', 'msg' : 'Successfully created workflow wfdef_hello_world for user username.'}'
 ```
 
 ## Launch and monitor the workflow
 
 ```python
     response = sweep_client.launch_workflow(
-        wid="wfdef_hello_world",
+        wid='wfdef_hello_world',
         user=user)
-    lid = response["launch_id"]
+    lid = response['launch_id']
 
 
-    response = sweep_client.launch_status(wid="wfdef_hello_world", lid=lid, user=user)
+    response = sweep_client.launch_status(wid='wfdef_hello_world', lid=lid, user=user)
     print(response)
 ```
 
@@ -1212,4 +1212,4 @@ Tasks 2_A, 2_B, 2_C were run in separate containers with different values for en
 
 
 
-
+r
