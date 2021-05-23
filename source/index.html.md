@@ -199,9 +199,9 @@ A destination definition contains all the necessary information to execute a tas
 
 required:
 
-* **id:**: unique identifier of the destination
+* **id:** unique identifier of the destination
 
-* **cloud_provider:**: the cloud provider of this destination
+* **cloud_provider:** the cloud provider of this destination
 
 
 ### AWS destinations
@@ -223,7 +223,7 @@ required:
 
 * **profile_name:** name of the AWS credentials profile to use.
 
-* **aws_account_id:**: id of AWS account to use
+* **aws_account_id:** id of AWS account to use
 
 * **aws_region:** AWS region to use
 
@@ -242,11 +242,11 @@ required:
 ```python
   {
       'id' : str,
-      'cloud_provider' : "Azure",
-       credentials : {azure_auth_file:str}
-       azure_region : str
-       azure_resource_group : str
-       azure_container_registry : str
+      'cloud_provider' : 'Azure',
+       'credentials' : {'azure_auth_file':str}
+       'azure_region' : str
+       'azure_resource_group' : str
+       'azure_container_registry' : str
   }
 ```
 
@@ -310,18 +310,7 @@ optional:
 'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'nodejs12.x'|'java8'|'java8.al2'|'java11'|'python2.7'|'python3.6'|'python3.7'|'python3.8'|'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'|'dotnetcore3.1'|'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'ruby2.7'|'provided'|'provided.al2',
 
 
-### Upload a function definition to SWEEP
-
-    function_def_file = "./folder/my_function_def.json"
-    function_code = "./folder/my_function_code.zip"
-    response = sweep_client.upload_function_def(ffile=function_def_file, code_file=function_code)
-    print(response)
-
-    > "{'status' : 'OK', 'msg' : '"Uploaded function.'}"
-
 > Note that the *function_definition* does not contain information about the actual code of the function. This is only specified when uploading the function to SWEEP, after that the function is referred to using its *function_name*.
-
-
 
 ## Creating **container definitions**
 
@@ -375,14 +364,6 @@ optional:
 > If not specified, default values (depending on CP) specified in the config file are used.
 
 
-### Upload a container definition to SWEEP
-
-    container_def_file = "./folder/my_container_def.json"
-    response = sweep_client.upload_container_def(cfile=container_def_file)
-    print(response)
-
-    > "{'status' : 'OK', 'msg' : '"Started uploading image.'}"
-
 **NOTE:** the specified image and tag must exist in the local docker registry.
 
 >   **trying to push another container definition with the same image_name and image_tag will**
@@ -393,32 +374,7 @@ optional:
 
 The upload may take some time.
 
-### List the uploaded container definitions
-
-
-```
-response = sweep_client.list_container_defs()
-print(response)
-
-> "{'status' : 'OK', 'msg' : 'Succeeded in fetching container definitions.',
-    'container_defs' :
- [
-	  {
-             "image_name": 'my_image_name',
-             "image_tag": 'latest',
-             "command": ['sh', '-c', 'echo hello'],
-             'cpu_units': '256',
-             'imagePushedAt': '2019-07-08 16:11:11+02:00',
-             'imageSizeInBytes': 2487,
-             'memory': '512'}
-  ]
- }"
-```
-
-
 # Communication between tasks
-
-
 
 ## Inputs
 
@@ -428,8 +384,8 @@ Workflow tasks get input of the following structure:
 
 ```python
 {
-    predecessor_outputs : dict,
-    static_input : dict
+    'predecessor_outputs' : dict,
+    'static_input' : dict
 }
 ```
 
@@ -508,13 +464,6 @@ Container-based tasks behave just like function-based tasks in a workflow, excep
 3. Their status is defined by their exit code. This is the exit code of the docker container,
    which is the exit code of the command run inside the container. Exit code 0 means success.
 
-
-
-**Make sure the images you push are such that they return the exit code 0 if they run successfully**
-This is standard behaviour, but you can check the exit code of a container locally by running
-your image and printing the environment variable ?, which contains the exit code of the latest run command.
-
-    docker run my_image; echo $?
 
 
 # Code examples
@@ -612,6 +561,13 @@ Use the SWEEP-API to upload the container definition:
     print(response)
     > {"status": "OK", "msg": "Started uploading image."}
 ```
+
+**Make sure the images you push are such that they return the exit code 0 if they run successfully**
+This is standard behaviour, but you can check the exit code of a container locally by running
+your image and printing the environment variable ?, which contains the exit code of the latest run command.
+
+    docker run my_image; echo $?
+
 
 
 
@@ -1253,46 +1209,6 @@ Tasks 2_A, 2_B, 2_C were run in separate containers with different values for en
 
 
 
-
-
-
-
-
-################3
-
-
-### Defining a workflow with container-based tasks
-
-To define container-based tasks in a workflow, the **"function_name"** argument is replaced by **image_name** and **image_tag** arguments.
-
-Example workflow with container-based tasks as well as function tasks.
-
-```python
-
-{ workflow_id : my_workflow,
-  providers : [],
-  tasks : [
-    {"id" : 1, "function_name" : first_func, "successors" : [2,3,4], "properties" : {"position" : "start"}},
-    {"id" : 2, "container_def_id": "my_cdef", "successors" : []},
-    {"id" : 3, "container_def_id": "my_cdef", "successors" : [4], "properties" : {delay : 10}},
-    {"id" : 4, "function_name" : other_func, "successors" : []}]
-
-}
-```
-
-
-
-### Regsiter a workflow with container-based tasks in SWEEP
-
-```python
-
-    workflow_def_file = "./folder/my_container_def.json"
-    response = sweep_client.register_workflow(wffile=workflow_def_file)
-    print(response)
-
-    > "{'workflow_id': 'my_workflow', 'status' : 'OK', 'msg' : 'Successfully created workflow my_workflow.'}"
-
-```
 
 
 
