@@ -10,6 +10,7 @@ This project houses source code/examples for the SWEEP Platform documentation. M
 --------------------------
 
 Following commands assume MacOS (please feel free to submit a pull-request for Windows)
+If you are using Windows, make sure to install Ruby at https://rubyinstaller.org/
 
 ```console
 $ git clone ...SWEEP-DOCS
