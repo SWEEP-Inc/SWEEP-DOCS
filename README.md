@@ -10,7 +10,8 @@ This project houses source code/examples for the SWEEP Platform documentation. M
 --------------------------
 
 Following commands assume MacOS (please feel free to submit a pull-request for Windows)  
-If you are using Windows, make sure to install Ruby at https://rubyinstaller.org/
+
+Please make sure to install Ruby at https://rubyinstaller.org/
 
 ```console
 $ git clone ...SWEEP-DOCS
@@ -24,6 +25,20 @@ Brings up the static website at http://localhost:4567.
 If 'bundle' does not exist, use 'Homebrew' to install
 ## Building the documentation (if needed)
 -----------------------------------------
+
+**Windows**: In your Gemfile, you must add
+
+```javascript
+gem 'middleman-gh-pages'
+```
+
+and then use
+
+```console
+$ bundle install
+```
+
+again.
 
 Create Rakefile, and add the below text to it
 
