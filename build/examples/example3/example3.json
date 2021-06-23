@@ -4,7 +4,12 @@
   "tasks": [
     {
       "id": "1",
-      "function_name": "firstFunc",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "firstFunc",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "2"
       ],
@@ -14,7 +19,12 @@
     },
     {
       "id": "2",
-      "function_name": "multFunc",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "multFunc",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "3"
       ],
@@ -24,7 +34,12 @@
     },
     {
       "id": "3",
-      "function_name": "otherFunc",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "otherFunc",
+          "priority" : 1
+        }
+      ],
       "successors": [],
       "properties": {
         "follow": "2"

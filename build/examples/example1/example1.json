@@ -4,7 +4,12 @@
   "tasks": [
     {
       "id": "1",
-      "function_name": "my_lambda_function",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "my_lambda_function1",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "2",
         "3",
@@ -16,7 +21,12 @@
     },
     {
       "id": "2",
-      "function_name": "my_lambda_function",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "my_lambda_function2",
+          "priority" : 1
+        }
+      ],
       "successors": [],
       "properties": {
         "static_input": {
@@ -26,7 +36,12 @@
     },
     {
       "id": "3",
-      "function_name": "my_lambda_function",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "my_lambda_function3",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "4"
       ],
@@ -36,7 +51,13 @@
     },
     {
       "id": "4",
-      "function_name": "my_lambda_function",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "my_lambda_function4",
+          "priority" : 1
+        }
+      ],
+
       "successors": []
     }
   ]

@@ -4,7 +4,12 @@
   "tasks": [
     {
       "id": "1",
-      "function_name": "lambda_func2",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "firstFunc",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "2",
         "3"
@@ -15,7 +20,12 @@
     },
     {
       "id": "2",
-      "function_name": "lambda_func2",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "multFunc",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "4"
       ],
@@ -25,14 +35,24 @@
     },
     {
       "id": "3",
-      "function_name": "lambda_func2",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "lambda_func2",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "4"
       ]
     },
     {
       "id": "4",
-      "function_name": "multFunc",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "multFunc",
+          "priority" : 1
+        }
+      ],
       "successors": [
         "5"
       ],
@@ -42,7 +62,12 @@
     },
     {
       "id": "5",
-      "function_name": "lambda_func2",
+      "execution_configurations" : [
+        {
+          "function_def_id" : "lambda_func2",
+          "priority" : 1
+        }
+      ],
       "successors": []
     }
   ]
