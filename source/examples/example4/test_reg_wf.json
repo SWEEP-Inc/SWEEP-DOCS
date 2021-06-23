@@ -1,6 +1,0 @@
-{ "workflow_id" : "test_reg_wf",
-  "providers" : [],
-  "tasks" : [
-    {"id" : "1", "function_name" : "myFunc", "successors" : ["2"], "properties" : {"position" : "start"}},
-    {"id" : "2", "function_name" : "myFunc", "successors" : []}]
-}

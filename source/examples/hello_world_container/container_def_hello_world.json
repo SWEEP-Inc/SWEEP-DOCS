@@ -1,8 +1,0 @@
-{
-  "id" : "cdef_hello_world",
-  "destination_id" : "dest1",
-  "image_name": "hello_world",
-  "image_tag": "latest",
-  "cpu" : "0.25",
-  "memory" : "512"
-}
